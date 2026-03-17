@@ -12,7 +12,6 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
-     <See My Work />
       <Industries />
       <Process />
       <Contact />

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suzanne Robitaille — Ghostwriter for Business Leaders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --surface: #f5f5f3; --border: #e0e0da;
+      --text: #111110; --muted: #6b6860; --accent: #a07840;
+      --accent-dim: rgba(201,169,110,0.12);
+      --sans: 'Instrument Sans', sans-serif;
+      --serif: 'Cormorant Garamond', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
+    .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-left:hover { color: var(--accent); }
+    .topbar-nav { display:flex; gap:36px; align-items:center; }
+    .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-nav a:hover { color:var(--accent); }
+    .hero { padding:100px 56px 80px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 360px; gap:80px; align-items:end; }
+    .hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
+    .hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--accent); display:block; }
+    .hero-headline { font-family:var(--serif); font-size:clamp(52px,7vw,96px); font-weight:700; line-height:0.95; letter-spacing:-0.01em; margin-bottom:32px; }
+    .hero-headline em { font-style:italic; color:var(--accent); }
+    .hero-body { font-size:16px; line-height:1.8; color:var(--muted); max-width:520px; margin-bottom:40px; }
+    .cta-row { display:flex; gap:16px; align-items:center; }
+    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s; font-family:var(--sans); }
+    .btn-primary:hover { opacity:0.85; }
+    .btn-ghost { display:inline-block; padding:14px 28px; border:1px solid var(--border); color:var(--muted); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; background:none; transition:border-color 0.2s, color 0.2s; font-family:var(--sans); }
+    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+    .hero-sidebar { border-left:1px solid var(--border); padding-left:48px; display:flex; flex-direction:column; }
+    .sidebar-row { padding:20px 0; border-bottom:1px solid var(--border); }
+    .sidebar-row:first-child { border-top:1px solid var(--border); }
+    .sr-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .sr-value { font-family:var(--serif); font-size:20px; font-style:italic; }
+    .sr-value strong { font-family:var(--sans); font-style:normal; font-size:26px; font-weight:600; color:var(--accent); }
+    #services { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:48px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .section-title { font-family:var(--serif); font-size:42px; font-weight:700; font-style:italic; }
+    .section-note { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .service-card { background:var(--surface); padding:40px 36px; border:1px solid var(--border); transition:border-color 0.25s, background 0.25s; }
+    .service-card:hover { border-color:var(--accent); background:var(--accent-dim); }
+    .sc-num { font-size:11px; letter-spacing:0.2em; color:var(--accent); margin-bottom:24px; opacity:0.7; }
+    .sc-title { font-family:var(--serif); font-size:28px; font-weight:700; line-height:1.1; margin-bottom:16px; }
+    .sc-body { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
+    .sc-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .sc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; }
+    .service-card:hover .sc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
+    #industries { padding:80px 56px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:320px 1fr; gap:80px; }
+    .industries-intro p { font-size:14px; line-height:1.85; color:var(--muted); margin-top:20px; }
+    .industries-list { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    .industry-item { padding:28px 32px; border:1px solid var(--border); background:var(--surface); display:flex; justify-content:space-between; align-items:flex-start; gap:16px; transition:border-color 0.2s; }
+    .industry-item:hover { border-color:var(--accent); }
+    .ii-name { font-family:var(--serif); font-size:22px; font-style:italic; margin-bottom:8px; }
+    .ii-desc { font-size:12px; color:var(--muted); line-height:1.6; }
+    .ii-arrow { color:var(--accent); font-size:18px; opacity:0; transition:opacity 0.2s; flex-shrink:0; margin-top:4px; }
+    .industry-item:hover .ii-arrow { opacity:1; }
+    #process { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:48px; }
+    .step { padding:36px 32px; border:1px solid var(--border); background:var(--surface); position:relative; }
+    .step::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); color:var(--accent); font-size:18px; z-index:1; }
+    .step:last-child::after { display:none; }
+    .step-num { font-size:48px; font-family:var(--serif); font-weight:700; color:var(--border); line-height:1; margin-bottom:16px; }
+    .step-title { font-size:14px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; }
+    .step-body { font-size:13px; line-height:1.75; color:var(--muted); }
+    #contact { padding:100px 56px; display:grid; grid-template-columns:1fr 1fr; gap:100px; }
+    .contact-headline { font-family:var(--serif); font-size:clamp(44px,6vw,72px); font-weight:700; line-height:0.98; margin-bottom:16px; }
+    .contact-headline em { font-style:italic; color:var(--accent); }
+    .contact-sub { font-size:13px; line-height:1.8; color:var(--muted); margin-bottom:48px; max-width:380px; }
+    .contact-links { display:flex; flex-direction:column; }
+    .contact-link { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--text); transition:padding-left 0.25s; }
+    .contact-link:hover { padding-left:12px; }
+    .cl-type { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+    .cl-val { font-family:var(--serif); font-size:22px; font-style:italic; }
+    .cl-arrow { color:var(--accent); font-size:20px; opacity:0; transform:translateX(-6px); transition:opacity 0.2s, transform 0.2s; }
+    .contact-link:hover .cl-arrow { opacity:1; transform:translateX(0); }
+    .avail { display:inline-flex; align-items:center; gap:10px; margin-top:36px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:10px 18px; }
+    .avail-dot { width:7px; height:7px; border-radius:50%; background:#3dbe7a; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+    .contact-card { background:var(--surface); border:1px solid var(--border); padding:44px; }
+    .contact-card-title { font-family:var(--serif); font-size:28px; font-style:italic; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .ideal-client-list { list-style:none; display:flex; flex-direction:column; }
+    .ideal-client-list li { display:flex; align-items:flex-start; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); font-size:14px; line-height:1.6; color:var(--muted); }
+    .ideal-client-list li::before { content:'✓'; color:var(--accent); font-size:12px; margin-top:3px; flex-shrink:0; }
+    .ideal-client-list li span { color:var(--text); font-weight:500; }
+    .contact-card-note { margin-top:24px; font-size:13px; line-height:1.75; color:var(--muted); font-style:italic; }
+    footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
+    .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
+    .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    .footer-note { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--border); }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    @media (max-width: 960px) {
+      .topbar, .hero, #services, #industries, #process, #contact, footer { padding-left:24px; padding-right:24px; }
+      .hero, #contact { grid-template-columns:1fr; gap:48px; }
+      .hero-sidebar { border-left:none; border-top:1px solid var(--border); padding-left:0; padding-top:32px; }
+      .services-grid, .process-steps { grid-template-columns:1fr; }
+      .step::after { display:none; }
+      #industries { grid-template-columns:1fr; gap:40px; }
+      .industries-list { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/index.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
+  <nav class="topbar-nav">
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#process">Process</a>
+    <a href="/work.html">See My Work</a>
+    <a href="#contact">Work Together</a>
+  </nav>
+</div>
+<section class="hero">
+  <div class="reveal">
+    <div class="hero-eyebrow">Ghostwriter for Business Leaders</div>
+    <h1 class="hero-headline">Your ideas.<br/><em>My words.</em><br/>Their attention.</h1>
+    <p class="hero-body">I help executives, founders, and operators find their voice — and place it where it matters. Thought leadership, books, speeches, and beyond. Confidential, always.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">Let's Talk</a>
+      <a href="/work.html" class="btn-ghost">See My Work</a>
+    </div>
+  </div>
+  <div class="hero-sidebar reveal" data-delay="150">
+    <div class="sidebar-row"><div class="sr-label">Experience</div><div class="sr-value"><strong>20+</strong> years writing</div></div>
+    <div class="sidebar-row"><div class="sr-label">Content Produced</div><div class="sr-value"><strong>100+</strong> articles &amp; essays</div></div>
+    <div class="sidebar-row"><div class="sr-label">Speciality</div><div class="sr-value">Business &amp; leadership voice</div></div>
+    <div class="sidebar-row"><div class="sr-label">Discretion</div><div class="sr-value">NDAs standard, always</div></div>
+  </div>
+</section>
+<section id="services">
+  <div class="section-header reveal"><h2 class="section-title">What I Write</h2><span class="section-note">Formats &amp; Deliverables</span></div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="sc-num">01</div><div class="sc-title">Thought Leadership Articles</div><p class="sc-body">LinkedIn essays, op-eds, and platform-specific content that positions you as the go-to voice in your field.</p><div class="sc-tags"><span class="sc-tag">LinkedIn</span><span class="sc-tag">Op-Ed</span><span class="sc-tag">Industry Press</span><span class="sc-tag">Substack</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">02</div><div class="sc-title">Books &amp; Long-Form</div><p class="sc-body">Business books, manifestos, and long-form narratives that codify your thinking and build lasting authority.</p><div class="sc-tags"><span class="sc-tag">Business Books</span><span class="sc-tag">Memoir</span><span class="sc-tag">Manifestos</span><span class="sc-tag">Reports</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">03</div><div class="sc-title">Speeches &amp; Keynotes</div><p class="sc-body">High-stakes spoken-word content for conference stages, AGMs, and internal all-hands.</p><div class="sc-tags"><span class="sc-tag">Keynotes</span><span class="sc-tag">Conference Talks</span><span class="sc-tag">Board Comms</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">04</div><div class="sc-title">Executive Newsletters</div><p class="sc-body">Ongoing editorial programmes that keep you visible and relevant — weekly, biweekly, or monthly.</p><div class="sc-tags"><span class="sc-tag">Email</span><span class="sc-tag">Substack</span><span class="sc-tag">Internal Comms</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">05</div><div class="sc-title">Strategic Narratives</div><p class="sc-body">Company origin stories, investor narratives, and brand messaging frameworks.</p><div class="sc-tags"><span class="sc-tag">Brand Story</span><span class="sc-tag">Investor Deck Copy</span><span class="sc-tag">About Pages</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">06</div><div class="sc-title">Interview-to-Draft</div><p class="sc-body">You talk, I write. One conversation becomes a polished, publication-ready piece.</p><div class="sc-tags"><span class="sc-tag">Fast Turnaround</span><span class="sc-tag">Voice Matching</span><span class="sc-tag">Any Format</span></div></div>
+  </div>
+</section>
+<section id="industries">
+  <div class="industries-intro reveal">
+    <h2 class="section-title">Industries<br/>I Write For</h2>
+    <p>Deep familiarity with the language, stakes, and audiences that matter in each sector.</p>
+  </div>
+  <div class="industries-list">
+    <div class="industry-item reveal"><div><div class="ii-name">Finance &amp; Fintech</div><div class="ii-desc">Investment theses, market commentary, regulatory opinion, founder narratives</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Technology &amp; SaaS</div><div class="ii-desc">Product leadership, AI commentary, engineering culture, go-to-market narrative</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Professional Services</div><div class="ii-desc">Consulting, law, accounting — expertise translated into readable authority</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Healthcare &amp; Life Sciences</div><div class="ii-desc">Clinical leadership, health policy, patient advocacy, pharma strategy</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Real Estate &amp; Infrastructure</div><div class="ii-desc">Development narratives, urban commentary, sustainability positioning</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Consumer &amp; Retail</div><div class="ii-desc">Brand founders, retail innovation, consumer culture, trend leadership</div></div><span class="ii-arrow">→</span></div>
+  </div>
+</section>
+<section id="process">
+  <div class="section-header reveal"><h2 class="section-title">How It Works</h2><span class="section-note">From Brief to Published</span></div>
+  <div class="process-steps">
+    <div class="step reveal"><div class="step-num">01</div><div class="step-title">Discovery Call</div><p class="step-body">30–60 minutes to understand your voice, your audience, your goals, and what you absolutely don't want to say.</p></div>
+    <div class="step reveal"><div class="step-num">02</div><div class="step-title">Voice Capture</div><p class="step-body">I analyse existing materials — emails, talks, interviews — to map the cadence, vocabulary, and tone that is distinctly yours.</p></div>
+    <div class="step reveal"><div class="step-num">03</div><div class="step-title">Draft &amp; Refine</div><p class="step-body">First draft delivered. Two rounds of revision included as standard. Most clients barely touch it.</p></div>
+    <div class="step reveal"><div class="step-num">04</div><div class="step-title">Publish &amp; Own</div><p class="step-body">You publish under your name. Full rights transfer. I disappear. The NDA was signed on day one.</p></div>
+  </div>
+</section>
+<section id="contact">
+  <div class="reveal">
+    <h2 class="contact-headline">Ready to<br/><em>build your</em><br/>voice?</h2>
+    <p class="contact-sub">I work with a small number of clients at a time. If the fit is right, let's talk.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/suzannerobitaille/" target="_blank" class="contact-link">
+        <div><div class="cl-type">LinkedIn</div><div class="cl-val">linkedin.com/in/suzannerobitaille</div></div>
+        <span class="cl-arrow">→</span>
+      </a>
+      <a href="https://calendly.com/suerobitaille/30min" target="_blank" class="contact-link">
+        <div><div class="cl-type">Book a Call</div><div class="cl-val">calendly.com/suerobitaille</div></div>
+        <span class="cl-arrow">→</span>
+      </a>
+    </div>
+    <div class="avail"><span class="avail-dot"></span>Accepting new clients — April 2026</div>
+  </div>
+  <div class="reveal" data-delay="150">
+    <div class="contact-card">
+      <div class="contact-card-title">You're probably a good fit if…</div>
+      <ul class="ideal-client-list">
+        <li><span>You're a senior leader</span> with genuine expertise but no time to write</li>
+        <li><span>You want to own a point of view</span> in your industry, not just post content</li>
+        <li><span>You value discretion</span> and understand ghostwriting is a profession</li>
+        <li><span>You have a clear audience</span> — a board, an industry, a market — you're trying to reach</li>
+        <li><span>You're building something</span> — a company, a legacy, a book — and words are part of it</li>
+      </ul>
+      <p class="contact-card-note">All engagements begin with a no-obligation discovery call. NDAs signed before any materials are shared.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="footer-name">Suzanne Robitaille</span>
+  <span class="footer-note">All client work is confidential</span>
+  <span class="footer-copy">© 2026</span>
+</footer>
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        setTimeout(() => e.target.classList.add('visible'), +(e.target.dataset.delay || 0));
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -59,9 +59,9 @@ export default function WorkPage() {
           </Link>
           <nav className="hidden md:flex gap-9">
             <Link href="/#services" className="text-[11px] tracking-[0.16em] uppercase text-muted hover:text-accent transition-colors">Services</Link>
+                        <Link href="/work" className="text-[11px] tracking-[0.16em] uppercase text-accent border-b border-accent pb-0.5">See My Work</Link>
             <Link href="/#industries" className="text-[11px] tracking-[0.16em] uppercase text-muted hover:text-accent transition-colors">Industries</Link>
             <Link href="/#process" className="text-[11px] tracking-[0.16em] uppercase text-muted hover:text-accent transition-colors">Process</Link>
-            <Link href="/work" className="text-[11px] tracking-[0.16em] uppercase text-accent border-b border-accent pb-0.5">See My Work</Link>
             <Link href="/#contact" className="text-[11px] tracking-[0.16em] uppercase text-muted hover:text-accent transition-colors">Work Together</Link>
           </nav>
         </div>

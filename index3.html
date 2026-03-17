@@ -18,20 +18,17 @@
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
 
-    /* TOPBAR */
     .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
     .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-left:hover { color: var(--accent); }
-    .topbar-nav { display:flex; gap:36px; }
+    .topbar-nav { display:flex; gap:36px; align-items:center; }
     .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-nav a:hover { color:var(--accent); }
     .topbar-nav a.active-nav { color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:2px; }
 
-    /* BUTTONS */
-    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:opacity 0.2s; border:none; font-family:var(--sans); }
+    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s; font-family:var(--sans); }
     .btn-primary:hover { opacity:0.85; }
 
-    /* WORK HERO */
     .work-hero { padding:80px 56px 60px; border-bottom:1px solid var(--border); }
     .work-hero-back { display:inline-flex; align-items:center; gap:10px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; margin-bottom:40px; transition:color 0.2s; }
     .work-hero-back:hover { color:var(--accent); }
@@ -41,13 +38,11 @@
     .work-hero h1 em { font-style:italic; color:var(--accent); }
     .work-hero p { font-size:15px; line-height:1.8; color:var(--muted); max-width:560px; }
 
-    /* FILTER BAR */
     .filter-bar { padding:24px 56px; border-bottom:1px solid var(--border); display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
     .filter-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-right:8px; }
     .filter-btn { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; padding:7px 16px; border:1px solid var(--border); background:none; color:var(--muted); cursor:pointer; transition:all 0.2s; font-family:var(--sans); }
     .filter-btn:hover, .filter-btn.active { border-color:var(--accent); color:var(--accent); background:var(--accent-dim); }
 
-    /* PORTFOLIO GRID */
     .portfolio-section { padding:60px 56px 100px; }
     .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
     .portfolio-card { background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:border-color 0.25s, background 0.25s; text-decoration:none; color:var(--text); }
@@ -69,7 +64,6 @@
     .pc-arrow { color:var(--accent); font-size:16px; opacity:0; transition:opacity 0.2s; flex-shrink:0; }
     .portfolio-card:hover .pc-arrow { opacity:1; }
 
-    /* SERVICES */
     .work-services { padding:0 56px 100px; }
     .work-services-title { font-family:var(--serif); font-size:36px; font-style:italic; font-weight:700; margin-bottom:32px; padding-bottom:20px; border-bottom:1px solid var(--border); }
     .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
@@ -82,17 +76,14 @@
     .sc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; transition:color 0.2s, border-color 0.2s; }
     .service-card:hover .sc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
 
-    /* FOOTER */
     footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
     .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
     .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
     .footer-note { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--border); }
 
-    /* REVEAL ANIMATIONS */
     .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity:1; transform:none; }
 
-    /* RESPONSIVE */
     @media (max-width: 960px) {
       .topbar, .work-hero, .filter-bar, .portfolio-section, .work-services, footer { padding-left:24px; padding-right:24px; }
       .portfolio-grid, .services-grid { grid-template-columns:1fr; }
@@ -102,18 +93,18 @@
 <body>
 
 <div class="topbar">
-  <a href="/index.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
+  <a href="/index2.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
   <nav class="topbar-nav">
-    <a href="/index.html#services">Services</a>
-    <a href="/index.html#industries">Industries</a>
-    <a href="/index.html#process">Process</a>
+    <a href="/index2.html#services">Services</a>
+    <a href="/index2.html#industries">Industries</a>
+    <a href="/index2.html#process">Process</a>
     <a href="/index3.html" class="active-nav">See My Work</a>
-    <a href="/index.html#contact">Work Together</a>
+    <a href="/index2.html#contact">Work Together</a>
   </nav>
 </div>
 
 <div class="work-hero reveal">
-  <a href="/index.html" class="work-hero-back">← Back to Home</a>
+  <a href="/index2.html" class="work-hero-back">← Back to Home</a>
   <div class="work-hero-eyebrow">Portfolio</div>
   <h1><em>Selected</em> Work</h1>
   <p>A curated selection of published writing across formats and industries. All client work remains confidential — what's shown here is bylined or publicly attributed.</p>
@@ -335,7 +326,7 @@
     <div class="service-card reveal"><div class="sc-num">06</div><div class="sc-title">Interview-to-Draft</div><p class="sc-body">You talk, I write. One conversation becomes a polished, publication-ready piece.</p><div class="sc-tags"><span class="sc-tag">Fast Turnaround</span><span class="sc-tag">Voice Matching</span></div></div>
   </div>
   <div style="margin-top:48px; text-align:center;">
-    <a href="/index.html#contact" class="btn-primary">Work Together →</a>
+    <a href="/index2.html#contact" class="btn-primary">Work Together →</a>
   </div>
 </div>
 
@@ -355,7 +346,6 @@
     });
   }
 
-  // Reveal animations on scroll
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting)

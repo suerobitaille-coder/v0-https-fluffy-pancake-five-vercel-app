@@ -19,12 +19,11 @@
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
 
     .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
-    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); cursor:pointer; }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-left:hover { color: var(--accent); }
     .topbar-nav { display:flex; gap:36px; align-items:center; }
-    .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; cursor:pointer; }
+    .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-nav a:hover { color:var(--accent); }
-    .topbar-nav a.active-nav { color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:2px; }
 
     .hero { padding:100px 56px 80px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 360px; gap:80px; align-items:end; }
     .hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
@@ -33,9 +32,9 @@
     .hero-headline em { font-style:italic; color:var(--accent); }
     .hero-body { font-size:16px; line-height:1.8; color:var(--muted); max-width:520px; margin-bottom:40px; }
     .cta-row { display:flex; gap:16px; align-items:center; }
-    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:opacity 0.2s; border:none; font-family:var(--sans); }
+    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s; font-family:var(--sans); }
     .btn-primary:hover { opacity:0.85; }
-    .btn-ghost { display:inline-block; padding:14px 28px; border:1px solid var(--border); color:var(--muted); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; cursor:pointer; background:none; transition:border-color 0.2s, color 0.2s; font-family:var(--sans); }
+    .btn-ghost { display:inline-block; padding:14px 28px; border:1px solid var(--border); color:var(--muted); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; background:none; transition:border-color 0.2s, color 0.2s; font-family:var(--sans); }
     .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
     .hero-sidebar { border-left:1px solid var(--border); padding-left:48px; display:flex; flex-direction:column; }
     .sidebar-row { padding:20px 0; border-bottom:1px solid var(--border); }
@@ -121,13 +120,13 @@
 <body>
 
 <div class="topbar">
-  <span class="topbar-left" onclick="navScroll('#services')">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</span>
+  <a href="/index2.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
   <nav class="topbar-nav">
-    <a onclick="navScroll('#services')">Services</a>
-    <a onclick="navScroll('#industries')">Industries</a>
-    <a onclick="navScroll('#process')">Process</a>
-    <a href="/index3.html" id="nav-work">See My Work</a>
-    <a onclick="navScroll('#contact')">Work Together</a>
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#process">Process</a>
+    <a href="/index3.html">See My Work</a>
+    <a href="#contact">Work Together</a>
   </nav>
 </div>
 
@@ -137,7 +136,7 @@
     <h1 class="hero-headline">Your ideas.<br/><em>My words.</em><br/>Their attention.</h1>
     <p class="hero-body">I help executives, founders, and operators find their voice — and place it where it matters. Thought leadership, books, speeches, and beyond. Confidential, always.</p>
     <div class="cta-row">
-      <button class="btn-primary" onclick="navScroll('#contact')">Let's Talk</button>
+      <a href="#contact" class="btn-primary">Let's Talk</a>
       <a href="/index3.html" class="btn-ghost">See My Work</a>
     </div>
   </div>
@@ -224,11 +223,6 @@
 </footer>
 
 <script>
-  function navScroll(hash) {
-    const el = document.querySelector(hash);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting)

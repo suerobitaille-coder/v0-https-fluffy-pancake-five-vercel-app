@@ -7,8 +7,8 @@ import { Spinner } from '@/components/ui/spinner'
 const contactLinks = [
   {
     type: 'Email',
-    value: 'suerobitaille (at) gmail.com',
-    href: 'mailto:suerobitaille@gmail.com',
+    value: 'suzanne@suzannerobitaille.com',
+    href: 'mailto:suzanne@suzannerobitaille.com',
   },
   {
     type: 'LinkedIn',

@@ -38,7 +38,7 @@ export function Hero() {
               {"Let's Talk"}
             </Link>
             <Link
-              href="/work.html"
+              href="/work"
               className="inline-block px-7 py-3.5 border border-border text-muted text-[11px] font-semibold tracking-[0.18em] uppercase hover:border-accent hover:text-accent transition-colors"
             >
               See My Work

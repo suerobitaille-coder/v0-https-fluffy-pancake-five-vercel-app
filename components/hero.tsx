@@ -49,8 +49,12 @@ export function Hero() {
               href="#services"
               className="inline-block px-7 py-3.5 border border-border text-muted text-[11px] font-semibold tracking-[0.18em] uppercase hover:border-accent hover:text-accent transition-colors"
             >
-              See My Work
-            </Link>
+             <Link
+  href="/work.html"
+  className="inline-block px-7 py-3.5 border border-border text-muted text-[11px] font-semibold tracking-[0.18em] uppercase hover:border-accent hover:text-accent transition-colors"
+>
+  See My Work
+</Link>
           </div>
         </div>
 

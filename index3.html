@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selected Work — Suzanne Robitaille</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --surface: #f5f5f3; --border: #e0e0da;
+      --text: #111110; --muted: #6b6860; --accent: #a07840;
+      --accent-dim: rgba(201,169,110,0.12);
+      --sans: 'Instrument Sans', sans-serif;
+      --serif: 'Cormorant Garamond', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
+
+    /* TOPBAR */
+    .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-left:hover { color: var(--accent); }
+    .topbar-nav { display:flex; gap:36px; }
+    .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-nav a:hover { color:var(--accent); }
+    .topbar-nav a.active-nav { color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:2px; }
+
+    /* BUTTONS */
+    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:opacity 0.2s; border:none; font-family:var(--sans); }
+    .btn-primary:hover { opacity:0.85; }
+
+    /* WORK HERO */
+    .work-hero { padding:80px 56px 60px; border-bottom:1px solid var(--border); }
+    .work-hero-back { display:inline-flex; align-items:center; gap:10px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; margin-bottom:40px; transition:color 0.2s; }
+    .work-hero-back:hover { color:var(--accent); }
+    .work-hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; }
+    .work-hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--accent); display:block; }
+    .work-hero h1 { font-family:var(--serif); font-size:clamp(44px,6vw,80px); font-weight:700; line-height:0.95; margin-bottom:24px; }
+    .work-hero h1 em { font-style:italic; color:var(--accent); }
+    .work-hero p { font-size:15px; line-height:1.8; color:var(--muted); max-width:560px; }
+
+    /* FILTER BAR */
+    .filter-bar { padding:24px 56px; border-bottom:1px solid var(--border); display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .filter-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-right:8px; }
+    .filter-btn { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; padding:7px 16px; border:1px solid var(--border); background:none; color:var(--muted); cursor:pointer; transition:all 0.2s; font-family:var(--sans); }
+    .filter-btn:hover, .filter-btn.active { border-color:var(--accent); color:var(--accent); background:var(--accent-dim); }
+
+    /* PORTFOLIO GRID */
+    .portfolio-section { padding:60px 56px 100px; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .portfolio-card { background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:border-color 0.25s, background 0.25s; text-decoration:none; color:var(--text); }
+    .portfolio-card:hover { border-color:var(--accent); background:var(--accent-dim); }
+    .pc-thumb { height:140px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border); font-family:var(--serif); font-size:22px; font-style:italic; color:var(--muted); background:var(--bg); position:relative; overflow:hidden; transition:color 0.25s; }
+    .portfolio-card:hover .pc-thumb { color:var(--accent); border-color:var(--accent); }
+    .pc-pub-badge { position:absolute; top:12px; left:12px; font-family:var(--sans); font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:3px 8px; background:var(--bg); }
+    .pc-body { padding:24px 24px 20px; flex:1; display:flex; flex-direction:column; }
+    .pc-meta { display:flex; gap:10px; align-items:center; margin-bottom:12px; }
+    .pc-type { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
+    .pc-dot { width:3px; height:3px; border-radius:50%; background:var(--border); }
+    .pc-date { font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+    .pc-title { font-family:var(--serif); font-size:19px; font-weight:700; line-height:1.2; margin-bottom:10px; }
+    .pc-desc { font-size:12px; line-height:1.75; color:var(--muted); flex:1; }
+    .pc-footer { display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
+    .pc-tags { display:flex; flex-wrap:wrap; gap:5px; }
+    .pc-tag { font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:3px 7px; }
+    .portfolio-card:hover .pc-tag { border-color:var(--accent); color:var(--accent); opacity:0.7; }
+    .pc-arrow { color:var(--accent); font-size:16px; opacity:0; transition:opacity 0.2s; flex-shrink:0; }
+    .portfolio-card:hover .pc-arrow { opacity:1; }
+
+    /* SERVICES */
+    .work-services { padding:0 56px 100px; }
+    .work-services-title { font-family:var(--serif); font-size:36px; font-style:italic; font-weight:700; margin-bottom:32px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .service-card { background:var(--surface); padding:40px 36px; border:1px solid var(--border); transition:border-color 0.25s, background 0.25s; }
+    .service-card:hover { border-color:var(--accent); background:var(--accent-dim); }
+    .sc-num { font-size:11px; letter-spacing:0.2em; color:var(--accent); margin-bottom:24px; opacity:0.7; }
+    .sc-title { font-family:var(--serif); font-size:28px; font-weight:700; line-height:1.1; margin-bottom:16px; }
+    .sc-body { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
+    .sc-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .sc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; transition:color 0.2s, border-color 0.2s; }
+    .service-card:hover .sc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
+    .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
+    .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    .footer-note { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--border); }
+
+    /* REVEAL ANIMATIONS */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .topbar, .work-hero, .filter-bar, .portfolio-section, .work-services, footer { padding-left:24px; padding-right:24px; }
+      .portfolio-grid, .services-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/index.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
+  <nav class="topbar-nav">
+    <a href="/index.html#services">Services</a>
+    <a href="/index.html#industries">Industries</a>
+    <a href="/index.html#process">Process</a>
+    <a href="/index2.html" class="active-nav">See My Work</a>
+    <a href="/index.html#contact">Work Together</a>
+  </nav>
+</div>
+
+<div class="work-hero reveal">
+  <a href="/index.html" class="work-hero-back">← Back to Home</a>
+  <div class="work-hero-eyebrow">Portfolio</div>
+  <h1><em>Selected</em> Work</h1>
+  <p>A curated selection of published writing across formats and industries. All client work remains confidential — what's shown here is bylined or publicly attributed.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter by</span>
+  <button class="filter-btn active" onclick="filterWork('all',this)">All</button>
+  <button class="filter-btn" onclick="filterWork('op-ed',this)">Op-Ed</button>
+  <button class="filter-btn" onclick="filterWork('leadership',this)">Leadership</button>
+  <button class="filter-btn" onclick="filterWork('diversity',this)">Diversity &amp; Inclusion</button>
+  <button class="filter-btn" onclick="filterWork('finance',this)">Finance</button>
+</div>
+
+<div class="portfolio-section">
+  <div class="portfolio-grid" id="portfolio-grid">
+
+    <a href="https://fortune.com/2021/06/13/nasdaq-board-diversity-people-with-disabilities-labor-force/" target="_blank" class="portfolio-card reveal" data-tags="op-ed diversity">
+      <div class="pc-thumb">Fortune<span class="pc-pub-badge">Fortune</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Op-Ed</span><span class="pc-dot"></span><span class="pc-date">June 2021</span></div>
+        <div class="pc-title">Nasdaq wants to improve board diversity. Why doesn't that include people with disabilities?</div>
+        <p class="pc-desc">Argues that Nasdaq's board diversity proposal failed to include people with disabilities — a group with proven impact on company performance and governance.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Disability Inclusion</span><span class="pc-tag">Corporate Governance</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.fastcompany.com/90690646/disability-is-the-missing-piece-in-the-dei-puzzle" target="_blank" class="portfolio-card reveal" data-tags="op-ed diversity leadership">
+      <div class="pc-thumb">Fast Company<span class="pc-pub-badge">Fast Company</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Feature</span><span class="pc-dot"></span><span class="pc-date">2021</span></div>
+        <div class="pc-title">Disability Is the Missing Piece in the DEI Puzzle</div>
+        <p class="pc-desc">Even as DEI becomes a corporate priority, people with disabilities are being left behind — and Disability:IN is stepping in to create real, measurable change.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">DEI</span><span class="pc-tag">Disability Inclusion</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://cecp.co/cecp-insights-blog/how-disability-inclusion-builds-sustainable-companies/" target="_blank" class="portfolio-card reveal" data-tags="diversity leadership">
+      <div class="pc-thumb">CECP<span class="pc-pub-badge">CECP</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Thought Leadership</span><span class="pc-dot"></span><span class="pc-date">2021</span></div>
+        <div class="pc-title">How Disability Inclusion Builds Sustainable Companies</div>
+        <p class="pc-desc">Jill Houghton of Disability:IN makes the business case for disability inclusion — from stronger financial performance to a richer culture of innovation.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">ESG</span><span class="pc-tag">Disability Inclusion</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://news.crunchbase.com/startups/legaltech-hypergrowth-legalzoom-startups-venture-raj-goyle-onit/" target="_blank" class="portfolio-card reveal" data-tags="finance leadership">
+      <div class="pc-thumb">Crunchbase News<span class="pc-pub-badge">Crunchbase</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Opinion / Analysis</span><span class="pc-dot"></span><span class="pc-date">December 2021</span></div>
+        <div class="pc-title">Why Legaltech Is Poised For Hypergrowth</div>
+        <p class="pc-desc">Legaltech — long overlooked by investors — is on the verge of a fintech-style disruption, driven by COVID-19 and mounting pressure to digitise legal services.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Legaltech</span><span class="pc-tag">Venture</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.law360.com/pulse/articles/1411475/bodhala-s-raj-goyle-on-legal-tech-s-fintech-moment" target="_blank" class="portfolio-card reveal" data-tags="leadership finance">
+      <div class="pc-thumb">Law360 Pulse<span class="pc-pub-badge">Law360</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Executive Profile</span><span class="pc-dot"></span><span class="pc-date">August 2021</span></div>
+        <div class="pc-title">Bodhala's Raj Goyle On Legal Tech's Fintech Moment</div>
+        <p class="pc-desc">Profile of Raj Goyle on why the legal industry is on the verge of a disruption cycle mirroring fintech's transformation of financial services.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Legaltech</span><span class="pc-tag">Leadership</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://martechseries.com/mts-insights/interviews/techbytes-mykolas-rambus-general-manager-data-driven-marketing-equifax/" target="_blank" class="portfolio-card reveal" data-tags="finance leadership">
+      <div class="pc-thumb">MarTech Series<span class="pc-pub-badge">MarTech Series</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Executive Interview</span><span class="pc-dot"></span><span class="pc-date">May 2019</span></div>
+        <div class="pc-title">TechBytes with Mykolas Rambus, General Manager at Equifax</div>
+        <p class="pc-desc">How data and analytics are reshaping enterprise competitiveness, the rise of AI in marketing, and the future of voice technology.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Data &amp; Analytics</span><span class="pc-tag">MarTech</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.axial.net/forum/two-ways-lps-co-invest-worth/" target="_blank" class="portfolio-card reveal" data-tags="finance leadership">
+      <div class="pc-thumb">Axial<span class="pc-pub-badge">Axial</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Finance / Analysis</span><span class="pc-dot"></span><span class="pc-date">September 2017</span></div>
+        <div class="pc-title">Two Ways for LPs to Co-Invest, and Why It's Worth It</div>
+        <p class="pc-desc">A deep dive into LP co-investing strategies — direct co-investment vs. sidecar vehicles — and why LPs are increasingly taking a more active role in private equity.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Private Equity</span><span class="pc-tag">Co-Investment</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.linkedin.com/pulse/four-reasons-we-invest-underserved-markets-christopher-sugden/" target="_blank" class="portfolio-card reveal" data-tags="finance leadership">
+      <div class="pc-thumb">LinkedIn<span class="pc-pub-badge">LinkedIn</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Thought Leadership</span><span class="pc-dot"></span><span class="pc-date">December 2017</span></div>
+        <div class="pc-title">Four Reasons We Invest in Underserved Markets</div>
+        <p class="pc-desc">Makes the case that investing in the "rest of the country" — especially east of the Mississippi — has proven to be an extremely attractive opportunity.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Venture Capital</span><span class="pc-tag">Underserved Markets</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.linkedin.com/pulse/why-series-just-startups-anymore-christopher-sugden/" target="_blank" class="portfolio-card reveal" data-tags="finance leadership">
+      <div class="pc-thumb">LinkedIn<span class="pc-pub-badge">LinkedIn</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Thought Leadership</span><span class="pc-dot"></span><span class="pc-date">2017</span></div>
+        <div class="pc-title">Why Series A Is Not Just for Startups Anymore</div>
+        <p class="pc-desc">As the cost of launching a startup plummets, many companies bypass early-stage VC and go straight to growth equity — reshaping the funding landscape.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Growth Equity</span><span class="pc-tag">Startups</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.joinaliro.com/insights/participation-loan/" target="_blank" class="portfolio-card reveal" data-tags="finance">
+      <div class="pc-thumb">ALIRO<span class="pc-pub-badge">ALIRO</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Industry Insight</span><span class="pc-dot"></span><span class="pc-date">2021</span></div>
+        <div class="pc-title">Loan Participations: 3 Things to Know in 2021</div>
+        <p class="pc-desc">How loan participations have evolved and why new platforms like ALIRO are making balance sheet management more accessible than ever for credit unions and banks.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Fintech</span><span class="pc-tag">Credit Unions</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.lend360.org/4076-2/" target="_blank" class="portfolio-card reveal" data-tags="finance">
+      <div class="pc-thumb">LEND360<span class="pc-pub-badge">LEND360</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Industry Article</span><span class="pc-dot"></span><span class="pc-date">September 2020</span></div>
+        <div class="pc-title">5 Ways to Build Your Online Lending Brand</div>
+        <p class="pc-desc">A practical roadmap for online lenders navigating the COVID era — from content relevance and quality leads to data hygiene and cross-channel engagement.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Fintech</span><span class="pc-tag">Online Lending</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.bizjournals.com/bizjournals/how-to/funding/2016/08/theres-no-free-college.html" target="_blank" class="portfolio-card reveal" data-tags="finance">
+      <div class="pc-thumb">Biz Journals<span class="pc-pub-badge">Biz Journals</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Opinion / Finance</span><span class="pc-dot"></span><span class="pc-date">August 2016</span></div>
+        <div class="pc-title">There's No Free College</div>
+        <p class="pc-desc">Reliamax CEO Michael VanErdewyk makes the case for private student loans as a smarter alternative to credit card debt for families facing rising college costs.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Student Loans</span><span class="pc-tag">Personal Finance</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.huffingtonpost.co.uk/kris-green/china-economy_b_6706254.html" target="_blank" class="portfolio-card reveal" data-tags="leadership finance">
+      <div class="pc-thumb">HuffPost UK<span class="pc-pub-badge">HuffPost UK</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Op-Ed</span><span class="pc-dot"></span><span class="pc-date">2015</span></div>
+        <div class="pc-title">China's £310Billion Consumer Market: Are UK Retailers Missing Out?</div>
+        <p class="pc-desc">Borderfree CSO Kris Green argues UK retailers are leaving money on the table by failing to court China's vast and fast-growing consumer market.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">E-Commerce</span><span class="pc-tag">China</span><span class="pc-tag">Retail</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.bloomberg.com/news/articles/2008-12-23/for-the-disabled-more-power-for-playbusinessweek-business-news-stock-market-and-financial-advice" target="_blank" class="portfolio-card reveal" data-tags="diversity leadership">
+      <div class="pc-thumb">Bloomberg BW<span class="pc-pub-badge">Bloomberg BW</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Feature</span><span class="pc-dot"></span><span class="pc-date">December 2008</span></div>
+        <div class="pc-title">For the Disabled, More Power for Play</div>
+        <p class="pc-desc">Profiles the companies stepping up to make recreation accessible for people with disabilities — a group well-served at work but underserved at play.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Assistive Tech</span><span class="pc-tag">Disability</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.wsj.com/articles/SB121970164024670703" target="_blank" class="portfolio-card reveal" data-tags="diversity leadership">
+      <div class="pc-thumb">Wall Street Journal<span class="pc-pub-badge">WSJ</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Feature</span><span class="pc-dot"></span><span class="pc-date">2008</span></div>
+        <div class="pc-title">Finding the Right Way to Disclose a Disability</div>
+        <p class="pc-desc">A nuanced look at the personal and legal calculus behind disclosing a disability to an employer — when to do it and how to protect your rights.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Disability</span><span class="pc-tag">Workplace Rights</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.directorsandboards.com/board-composition/board-diversity/increasing-disability-representation-on-corporate-boards/" target="_blank" class="portfolio-card reveal" data-tags="diversity leadership op-ed">
+      <div class="pc-thumb">Directors &amp; Boards<span class="pc-pub-badge">Directors &amp; Boards</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Op-Ed</span><span class="pc-dot"></span><span class="pc-date">July 2023</span></div>
+        <div class="pc-title">Increasing Disability Representation on Corporate Boards</div>
+        <p class="pc-desc">Ted Kennedy Jr. makes the case that people with disabilities remain nearly invisible in the boardroom — and outlines how market forces, updated governance charters, and investor pressure can change that.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Board Diversity</span><span class="pc-tag">Disability Inclusion</span><span class="pc-tag">Governance</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.huffpost.com/entry/hiring-disabled-workers_b_2448183" target="_blank" class="portfolio-card reveal" data-tags="diversity leadership">
+      <div class="pc-thumb">HuffPost<span class="pc-pub-badge">HuffPost</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Op-Ed</span><span class="pc-dot"></span><span class="pc-date">2013</span></div>
+        <div class="pc-title">Walgreens Isn't Always the Answer</div>
+        <p class="pc-desc">Think Beyond the Label CEO Barb Otto argues that the Walgreens disability hiring model has limits — and that placing people with disabilities in middle- and high-skilled jobs would do far more for their economic outlook and American competitiveness.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Disability Employment</span><span class="pc-tag">Workforce</span><span class="pc-tag">Policy</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.newsweek.com/its-time-include-disability-all-corporate-diversity-requirements-opinion-1623032" target="_blank" class="portfolio-card reveal" data-tags="op-ed diversity leadership">
+      <div class="pc-thumb">Newsweek<span class="pc-pub-badge">Newsweek</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Op-Ed</span><span class="pc-dot"></span><span class="pc-date">August 2021</span></div>
+        <div class="pc-title">It's Time to Include Disability in All Corporate Diversity Requirements</div>
+        <p class="pc-desc">Ted Kennedy Jr. argues that when the SEC approved Nasdaq's board diversity initiative — covering women, minorities, and LGBTQ+ individuals — people with disabilities were left out once again, despite clear evidence of their business value.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Disability Inclusion</span><span class="pc-tag">Corporate Diversity</span><span class="pc-tag">Nasdaq</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a href="https://www.wsj.com/articles/SB946931533124460641" target="_blank" class="portfolio-card reveal" data-tags="leadership">
+      <div class="pc-thumb">Wall Street Journal<span class="pc-pub-badge">WSJ</span></div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type">Feature</span><span class="pc-dot"></span><span class="pc-date">2000</span></div>
+        <div class="pc-title">Hong Kong's Quality-of-Life Challenge</div>
+        <p class="pc-desc">As rivals like Singapore court foreign professionals, Hong Kong risks losing its edge as a regional hub — sliding backward on quality-of-life measures like pollution.</p>
+        <div class="pc-footer"><div class="pc-tags"><span class="pc-tag">Hong Kong</span><span class="pc-tag">Asia Business</span></div><span class="pc-arrow">→</span></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="work-services">
+  <div class="work-services-title">What I Can Write For You</div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="sc-num">01</div><div class="sc-title">Thought Leadership Articles</div><p class="sc-body">LinkedIn essays, op-eds, and platform-specific content that positions you as the go-to voice in your field.</p><div class="sc-tags"><span class="sc-tag">LinkedIn</span><span class="sc-tag">Op-Ed</span><span class="sc-tag">Industry Press</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">02</div><div class="sc-title">Books &amp; Long-Form</div><p class="sc-body">Business books, manifestos, and long-form narratives that codify your thinking and build lasting authority.</p><div class="sc-tags"><span class="sc-tag">Business Books</span><span class="sc-tag">Memoir</span><span class="sc-tag">Manifestos</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">03</div><div class="sc-title">Speeches &amp; Keynotes</div><p class="sc-body">High-stakes spoken-word content for conference stages, AGMs, and internal all-hands.</p><div class="sc-tags"><span class="sc-tag">Keynotes</span><span class="sc-tag">Conference Talks</span><span class="sc-tag">Board Comms</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">04</div><div class="sc-title">Executive Newsletters</div><p class="sc-body">Ongoing editorial programmes that keep you visible and relevant — weekly, biweekly, or monthly.</p><div class="sc-tags"><span class="sc-tag">Email</span><span class="sc-tag">Substack</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">05</div><div class="sc-title">Strategic Narratives</div><p class="sc-body">Company origin stories, investor narratives, and brand messaging frameworks.</p><div class="sc-tags"><span class="sc-tag">Brand Story</span><span class="sc-tag">Investor Deck Copy</span></div></div>
+    <div class="service-card reveal"><div class="sc-num">06</div><div class="sc-title">Interview-to-Draft</div><p class="sc-body">You talk, I write. One conversation becomes a polished, publication-ready piece.</p><div class="sc-tags"><span class="sc-tag">Fast Turnaround</span><span class="sc-tag">Voice Matching</span></div></div>
+  </div>
+  <div style="margin-top:48px; text-align:center;">
+    <a href="/index.html#contact" class="btn-primary">Work Together →</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-name">Suzanne Robitaille</span>
+  <span class="footer-note">All client work is confidential</span>
+  <span class="footer-copy">© 2026</span>
+</footer>
+
+<script>
+  function filterWork(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      if (tag === 'all') { card.style.display = ''; return; }
+      card.style.display = (card.dataset.tags || '').split(' ').includes(tag) ? '' : 'none';
+    });
+  }
+
+  // Reveal animations on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        setTimeout(() => e.target.classList.add('visible'), +(e.target.dataset.delay || 0));
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

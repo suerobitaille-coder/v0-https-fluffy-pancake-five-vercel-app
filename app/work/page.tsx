@@ -33,6 +33,7 @@ const portfolioItems = [
   { href: "https://www.businessinsider.com/sustainable-investing-esg-future", pub: "Business Insider", type: "Feature", date: "April 2023", tags: ["finance", "diversity"], title: "The Rise of Sustainable Investing: ESG's Moment Has Arrived", desc: "Institutional investors are increasingly demanding ESG accountability — and companies that fail to adapt risk being left behind.", chips: ["ESG", "Sustainable Investing"] },
   { href: "https://www.theatlantic.com/ideas/archive/2023/06/neurodiversity-workplace-advantage", pub: "The Atlantic", type: "Op-Ed", date: "June 2023", tags: ["op-ed", "diversity", "leadership"], title: "Neurodiversity Is a Competitive Advantage", desc: "Companies that recruit and accommodate neurodivergent workers are discovering untapped talent pools and fresh perspectives on problem-solving.", chips: ["Neurodiversity", "Talent Strategy"] },
   { href: "https://www.wired.com/story/2023/08/ai-ethics-corporate-responsibility", pub: "Wired", type: "Feature", date: "August 2023", tags: ["leadership"], title: "The AI Ethics Gap: Who's Responsible When Algorithms Go Wrong?", desc: "As AI becomes embedded in corporate decision-making, questions of accountability and transparency are becoming impossible to ignore.", chips: ["AI Ethics", "Corporate Responsibility"] },
+  { href: "https://blobs.vusercontent.net/blob/Country-Report-KOR_10pp_05-11-15_web-ixrBGFacKuxf8T819POEMl1C874cNI.pdf", pub: "Borderfree", type: "Country Report", date: "2015", tags: ["reports", "finance"], title: "South Korea Country Report", desc: "As Asia's fourth-largest economy, there is ample upside in the South Korean marketplace, which was Borderfree's No. 10 market last year by sales volume.", chips: ["E-Commerce", "South Korea", "Market Analysis"] },
 ]
 
 const filters = [
@@ -41,6 +42,7 @@ const filters = [
   { key: 'leadership', label: 'Leadership' },
   { key: 'diversity', label: 'Diversity & Inclusion' },
   { key: 'finance', label: 'Finance' },
+  { key: 'reports', label: 'Reports' },
 ]
 
 const services = [

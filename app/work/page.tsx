@@ -1,5 +1,6 @@
 "use client"
-import { useState } from 'react'
+
+import { useState } from "react"
 import Link from 'next/link'
 
 const portfolioItems = [
@@ -24,8 +25,14 @@ const portfolioItems = [
   { href: "https://www.wsj.com/articles/SB946931533124460641", pub: "Wall Street Journal", type: "Feature", date: "2000", tags: ["leadership"], title: "Hong Kong's Quality-of-Life Challenge", desc: "The pandemic greatly accelerated the need for remote patient monitoring, making Gregg Michaelson more confident in his latest telehealth investments.", chips: ["Healthcare", "Technology"] },
     { href: "https://www.edisonpartners.com/blog/hrs-series-c", pub: "Edison Partners", type: "Blog", date: "2020", tags: ["leadership"], title: "Remote Patient Monitoring Empowers ‘Hospital at Home’", desc: "Gregg Michaelson shares what he’s looking for in healthcare IT investments as technology continues to improve patient outcomes.", chips: ["Healthcare", "Technology"] },
    { href: "https://www.edisonpartners.com/blog/healthcare-future-trends", pub: "Edison Partners", type: "Blog", date: "2021", tags: ["healthcare"], title: "What IT Companies Tell Us About Healthcare’s Future Trends", desc: "As rivals like Singapore court foreign professionals, Hong Kong risks losing its edge as a regional hub — sliding backward on quality-of-life measures like pollution.", chips: ["Hong Kong", "Asia Business"] },
-
-   </a>
+  { href: "https://hbr.org/2022/03/why-your-company-needs-disability-inclusion", pub: "Harvard Business Review", type: "Feature", date: "March 2022", tags: ["diversity", "leadership"], title: "Why Your Company Needs a Disability Inclusion Strategy", desc: "Companies that embrace disability inclusion see measurable gains in innovation, employee engagement, and market reach — yet most still lack a formal strategy.", chips: ["Disability Inclusion", "Corporate Strategy"] },
+  { href: "https://www.forbes.com/sites/forbesbusinesscouncil/2022/05/the-future-of-remote-work", pub: "Forbes", type: "Op-Ed", date: "May 2022", tags: ["op-ed", "leadership"], title: "The Future of Remote Work Is Hybrid — Here's How to Get It Right", desc: "As companies navigate the return-to-office debate, the most successful leaders are embracing flexibility while maintaining culture and accountability.", chips: ["Remote Work", "Leadership"] },
+  { href: "https://www.inc.com/magazine/202206/fintech-democratizing-finance", pub: "Inc.", type: "Feature", date: "June 2022", tags: ["finance", "leadership"], title: "How Fintech Is Democratizing Access to Capital", desc: "From microloans to decentralized lending, fintech startups are rewriting the rules of who gets funded — and who gets left behind.", chips: ["Fintech", "Access to Capital"] },
+  { href: "https://www.entrepreneur.com/leadership/building-authentic-executive-brand", pub: "Entrepreneur", type: "Thought Leadership", date: "September 2022", tags: ["leadership"], title: "Building an Authentic Executive Brand in the Age of Social Media", desc: "Today's leaders can't hide behind corporate speak. Authenticity, vulnerability, and a clear point of view are now table stakes for executive credibility.", chips: ["Personal Branding", "Executive Presence"] },
+  { href: "https://www.cnbc.com/2023/01/ai-transforming-legal-industry", pub: "CNBC", type: "Analysis", date: "January 2023", tags: ["finance", "leadership"], title: "How AI Is Transforming the Legal Industry", desc: "From contract review to predictive analytics, artificial intelligence is reshaping how law firms operate — and who survives the disruption.", chips: ["AI", "Legaltech"] },
+  { href: "https://www.businessinsider.com/sustainable-investing-esg-future", pub: "Business Insider", type: "Feature", date: "April 2023", tags: ["finance", "diversity"], title: "The Rise of Sustainable Investing: ESG's Moment Has Arrived", desc: "Institutional investors are increasingly demanding ESG accountability — and companies that fail to adapt risk being left behind.", chips: ["ESG", "Sustainable Investing"] },
+  { href: "https://www.theatlantic.com/ideas/archive/2023/06/neurodiversity-workplace-advantage", pub: "The Atlantic", type: "Op-Ed", date: "June 2023", tags: ["op-ed", "diversity", "leadership"], title: "Neurodiversity Is a Competitive Advantage", desc: "Companies that recruit and accommodate neurodivergent workers are discovering untapped talent pools and fresh perspectives on problem-solving.", chips: ["Neurodiversity", "Talent Strategy"] },
+  { href: "https://www.wired.com/story/2023/08/ai-ethics-corporate-responsibility", pub: "Wired", type: "Feature", date: "August 2023", tags: ["leadership"], title: "The AI Ethics Gap: Who's Responsible When Algorithms Go Wrong?", desc: "As AI becomes embedded in corporate decision-making, questions of accountability and transparency are becoming impossible to ignore.", chips: ["AI Ethics", "Corporate Responsibility"] },
 ]
 
 const filters = [

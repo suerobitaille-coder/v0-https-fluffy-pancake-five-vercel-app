@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${instrumentSans.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${cormorant.variable} ${instrumentSans.variable}`}>
       <body className="font-sans antialiased text-[15px] leading-relaxed overflow-x-hidden">
         {children}
         <Analytics />

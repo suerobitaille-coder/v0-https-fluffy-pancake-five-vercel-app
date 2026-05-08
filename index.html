@@ -92,6 +92,15 @@
     .ideal-client-list li::before { content:'✓'; color:var(--accent); font-size:12px; margin-top:3px; flex-shrink:0; }
     .ideal-client-list li span { color:var(--text); font-weight:500; }
     .contact-card-note { margin-top:24px; font-size:13px; line-height:1.75; color:var(--muted); font-style:italic; }
+    .contact-form { margin-top:40px; padding-top:40px; border-top:1px solid var(--border); }
+    .contact-form-title { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+    .form-field { display:flex; flex-direction:column; margin-bottom:16px; }
+    .form-field input, .form-field textarea { background:var(--bg); border:1px solid var(--border); padding:12px 16px; font-family:var(--sans); font-size:13px; color:var(--text); transition:border-color 0.2s; outline:none; resize:none; }
+    .form-field input:focus, .form-field textarea:focus { border-color:var(--accent); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color:var(--muted); opacity:0.6; }
+    .form-submit { display:inline-block; padding:12px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; border:none; cursor:pointer; font-family:var(--sans); transition:opacity 0.2s; width:100%; }
+    .form-submit:hover { opacity:0.85; }
+    .form-success { display:none; padding:16px; background:var(--accent-dim); border:1px solid var(--accent); font-size:13px; color:var(--accent); margin-top:12px; }
     footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
     .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
     .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
@@ -149,39 +158,44 @@
     <div class="service-card reveal">
       <div class="sc-num">01</div>
       <div class="sc-title">Content Strategy</div>
-      <p class="sc-body">End-to-end content programs built around your growth goals, including audience mapping, editorial calendars, channel strategy and measurable outcomes.</p>
+      <p class="sc-body">End-to-end content programs built around your growth goals — audience mapping, editorial calendars, channel strategy, and measurable outcomes. Not just a plan. A system.</p>
       <div class="sc-tags"><span class="sc-tag">Editorial Planning</span><span class="sc-tag">Audience Mapping</span><span class="sc-tag">Channel Strategy</span><span class="sc-tag">Metrics</span></div>
     </div>
     <div class="service-card reveal">
       <div class="sc-num">02</div>
       <div class="sc-title">Thought Leadership</div>
-      <p class="sc-body">Op-eds, bylined articles and multi-platform content that puts your founders and executives in front of the audiences that matter, such as investors, customers and future hires.</p>
+      <p class="sc-body">Op-eds, bylined articles, and platform content that puts your founders and executives in front of the audiences that matter — investors, customers, and future hires.</p>
       <div class="sc-tags"><span class="sc-tag">Op-Eds</span><span class="sc-tag">LinkedIn</span><span class="sc-tag">Industry Press</span><span class="sc-tag">Substack</span></div>
     </div>
     <div class="service-card reveal">
       <div class="sc-num">03</div>
-      <div class="sc-title">Media Relations</div>
-      <p class="sc-body">Earned media strategy and execution for bylines and news, honed from 10 years of building reporter relationships and securing coverage in target outlets.
-</p>
-      <div class="sc-tags"><span class="sc-tag">Byline placement</span><span class="sc-tag">Press releases</span><span class="sc-tag">Media lists</span><span class="sc-tag">Targeted outreach</span></div>
+      <div class="sc-title">Brand Narrative</div>
+      <p class="sc-body">The story underneath everything else — your origin, your why, your differentiation. Messaging frameworks and brand narratives that give your team a shared language and your market a reason to care.</p>
+      <div class="sc-tags"><span class="sc-tag">Messaging Frameworks</span><span class="sc-tag">Brand Story</span><span class="sc-tag">Positioning</span><span class="sc-tag">About Pages</span></div>
     </div>
     <div class="service-card reveal">
       <div class="sc-num">04</div>
       <div class="sc-title">Demand Generation Content</div>
-      <p class="sc-body">Content that works further down the funnel, such as case studies, white papers, sales enablement and nurture sequences that move prospects from aware to ready.</p>
+      <p class="sc-body">Content that works further down the funnel — case studies, white papers, sales enablement, and nurture sequences that move prospects from aware to ready.</p>
       <div class="sc-tags"><span class="sc-tag">Case Studies</span><span class="sc-tag">White Papers</span><span class="sc-tag">Sales Enablement</span><span class="sc-tag">Email Nurture</span></div>
     </div>
     <div class="service-card reveal">
       <div class="sc-num">05</div>
       <div class="sc-title">Executive Content Programs</div>
-      <p class="sc-body">Ongoing content programs that keep founders and C-suite leaders visible, credible and vocal across the channels their stakeholders actually read.</p>
+      <p class="sc-body">Ongoing content programs for founders and C-suite leaders — keeping them visible, credible, and vocal across the channels their stakeholders actually read.</p>
       <div class="sc-tags"><span class="sc-tag">LinkedIn Strategy</span><span class="sc-tag">Newsletters</span><span class="sc-tag">Speaking Content</span><span class="sc-tag">Calendars</span></div>
     </div>
     <div class="service-card reveal">
       <div class="sc-num">06</div>
       <div class="sc-title">Content Audits &amp; Advisory</div>
-      <p class="sc-body">A close look at the assets what you have, what's working and what you need to create next to amplify your brand.</p>
+      <p class="sc-body">A clear-eyed look at what you have, what's working, and what to do next. Ideal for companies between content hires or scaling a team for the first time.</p>
       <div class="sc-tags"><span class="sc-tag">Content Audit</span><span class="sc-tag">Gap Analysis</span><span class="sc-tag">Team Advisory</span><span class="sc-tag">Hiring Support</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">07</div>
+      <div class="sc-title">Media Relations</div>
+      <p class="sc-body">Earned media strategy and execution for growth-stage companies that have a story worth telling. From press release to placement — pitching journalists, building reporter relationships, and securing coverage in the outlets your buyers and investors actually read.</p>
+      <div class="sc-tags"><span class="sc-tag">Press Strategy</span><span class="sc-tag">Journalist Outreach</span><span class="sc-tag">Press Releases</span><span class="sc-tag">Earned Media</span></div>
     </div>
   </div>
 </section>
@@ -189,7 +203,7 @@
 <section id="industries">
   <div class="industries-intro reveal">
     <h2 class="section-title">Industries<br/>I Know Well</h2>
-    <p>Growth-stage companies succeed when their content speaks the language of their market. I bring deep sector expertise so you get high-quality content, every time.</p>
+    <p>Growth-stage companies succeed when their content speaks the language of their market. I bring deep sector familiarity — not a generalist's approximation.</p>
   </div>
   <div class="industries-list">
     <div class="industry-item reveal"><div><div class="ii-name">Fintech &amp; Financial Services</div><div class="ii-desc">B2B fintech, lending platforms, payments, wealth tech, regulatory content</div></div><span class="ii-arrow">→</span></div>
@@ -245,16 +259,35 @@
       </a>
     </div>
     <div class="avail"><span class="avail-dot"></span>Taking on new clients — May 2026</div>
+    <div class="contact-form reveal">
+      <div class="contact-form-title">Send a Message</div>
+      <form id="contactForm" action="https://formspree.io/f/xkoyqgnl" method="POST">
+        <div class="form-field">
+          <input type="text" name="name" placeholder="Your name" required/>
+        </div>
+        <div class="form-field">
+          <input type="email" name="email" placeholder="Your email" required/>
+        </div>
+        <div class="form-field">
+          <input type="text" name="company" placeholder="Company (optional)"/>
+        </div>
+        <div class="form-field">
+          <textarea name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+      <div class="form-success" id="formSuccess">Thanks — I'll be in touch shortly.</div>
+    </div>
   </div>
   <div class="reveal" data-delay="150">
     <div class="contact-card">
       <div class="contact-card-title">You're probably a good fit if…</div>
       <ul class="ideal-client-list">
-        <li><span>You're venture-backed</span> and you need content that builds trust and translates complexity.</li>
-        <li><span>You need pipeline,</span> and premium content helps you perform in crowded markets</li>
+        <li><span>You're Series A to C</span> and content has been reactive, not strategic — and you're ready to change that</li>
+        <li><span>You need pipeline,</span> not just traffic — content that actually contributes to revenue</li>
         <li><span>Your founders have a point of view</span> worth amplifying but no time or process to do it consistently</li>
         <li><span>You're building or scaling a content function</span> and need senior guidance to get it right the first time</li>
-        <li><span>You operate in a complex or regulated market</span> where content needs to educate, not just attract</li>
+        <li><span>You operate in a complex market</span> where content needs to educate, not just attract</li>
       </ul>
       <p class="contact-card-note">Every engagement starts with a no-obligation discovery call. I'll tell you honestly if I think we're a fit.</p>
     </div>
@@ -268,6 +301,15 @@
 </footer>
 
 <script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) { form.style.display='none'; success.style.display='block'; }
+  });
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting)

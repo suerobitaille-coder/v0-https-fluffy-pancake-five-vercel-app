@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Suzanne Robitaille — Ghostwriter for Business Leaders</title>
+  <title>Work — Suzanne Robitaille</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,194 +18,479 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
+
     .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
     .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-left:hover { color: var(--accent); }
     .topbar-nav { display:flex; gap:36px; align-items:center; }
     .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-nav a:hover { color:var(--accent); }
-    .hero { padding:100px 56px 80px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 360px; gap:80px; align-items:end; }
+    .topbar-nav a.active { color:var(--accent); }
+
+    .page-hero { padding:80px 56px 60px; border-bottom:1px solid var(--border); }
     .hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
     .hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--accent); display:block; }
-    .hero-headline { font-family:var(--serif); font-size:clamp(52px,7vw,96px); font-weight:700; line-height:0.95; letter-spacing:-0.01em; margin-bottom:32px; }
-    .hero-headline em { font-style:italic; color:var(--accent); }
-    .hero-body { font-size:16px; line-height:1.8; color:var(--muted); max-width:520px; margin-bottom:40px; }
-    .cta-row { display:flex; gap:16px; align-items:center; }
-    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s; font-family:var(--sans); }
-    .btn-primary:hover { opacity:0.85; }
-    .btn-ghost { display:inline-block; padding:14px 28px; border:1px solid var(--border); color:var(--muted); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; background:none; transition:border-color 0.2s, color 0.2s; font-family:var(--sans); }
-    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
-    .hero-sidebar { border-left:1px solid var(--border); padding-left:48px; display:flex; flex-direction:column; }
-    .sidebar-row { padding:20px 0; border-bottom:1px solid var(--border); }
-    .sidebar-row:first-child { border-top:1px solid var(--border); }
-    .sr-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-    .sr-value { font-family:var(--serif); font-size:20px; font-style:italic; }
-    .sr-value strong { font-family:var(--sans); font-style:normal; font-size:26px; font-weight:600; color:var(--accent); }
-    #services { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .page-headline { font-family:var(--serif); font-size:clamp(48px,6vw,80px); font-weight:700; line-height:0.95; letter-spacing:-0.01em; margin-bottom:24px; }
+    .page-headline em { font-style:italic; color:var(--accent); }
+    .page-sub { font-size:16px; line-height:1.8; color:var(--muted); max-width:560px; }
+
+    #work { padding:80px 56px; }
     .section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:48px; padding-bottom:20px; border-bottom:1px solid var(--border); }
     .section-title { font-family:var(--serif); font-size:42px; font-weight:700; font-style:italic; }
     .section-note { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
-    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-    .service-card { background:var(--surface); padding:40px 36px; border:1px solid var(--border); transition:border-color 0.25s, background 0.25s; }
-    .service-card:hover { border-color:var(--accent); background:var(--accent-dim); }
-    .sc-num { font-size:11px; letter-spacing:0.2em; color:var(--accent); margin-bottom:24px; opacity:0.7; }
-    .sc-title { font-family:var(--serif); font-size:28px; font-weight:700; line-height:1.1; margin-bottom:16px; }
-    .sc-body { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
-    .sc-tags { display:flex; flex-wrap:wrap; gap:8px; }
-    .sc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; }
-    .service-card:hover .sc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
-    #industries { padding:80px 56px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:320px 1fr; gap:80px; }
-    .industries-intro p { font-size:14px; line-height:1.85; color:var(--muted); margin-top:20px; }
-    .industries-list { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-    .industry-item { padding:28px 32px; border:1px solid var(--border); background:var(--surface); display:flex; justify-content:space-between; align-items:flex-start; gap:16px; transition:border-color 0.2s; }
-    .industry-item:hover { border-color:var(--accent); }
-    .ii-name { font-family:var(--serif); font-size:22px; font-style:italic; margin-bottom:8px; }
-    .ii-desc { font-size:12px; color:var(--muted); line-height:1.6; }
-    .ii-arrow { color:var(--accent); font-size:18px; opacity:0; transition:opacity 0.2s; flex-shrink:0; margin-top:4px; }
-    .industry-item:hover .ii-arrow { opacity:1; }
-    #process { padding:80px 56px; border-bottom:1px solid var(--border); }
-    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:48px; }
-    .step { padding:36px 32px; border:1px solid var(--border); background:var(--surface); position:relative; }
-    .step::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); color:var(--accent); font-size:18px; z-index:1; }
-    .step:last-child::after { display:none; }
-    .step-num { font-size:48px; font-family:var(--serif); font-weight:700; color:var(--border); line-height:1; margin-bottom:16px; }
-    .step-title { font-size:14px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; }
-    .step-body { font-size:13px; line-height:1.75; color:var(--muted); }
-    #contact { padding:100px 56px; display:grid; grid-template-columns:1fr 1fr; gap:100px; }
-    .contact-headline { font-family:var(--serif); font-size:clamp(44px,6vw,72px); font-weight:700; line-height:0.98; margin-bottom:16px; }
-    .contact-headline em { font-style:italic; color:var(--accent); }
-    .contact-sub { font-size:13px; line-height:1.8; color:var(--muted); margin-bottom:48px; max-width:380px; }
-    .contact-links { display:flex; flex-direction:column; }
-    .contact-link { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--text); transition:padding-left 0.25s; }
-    .contact-link:hover { padding-left:12px; }
-    .cl-type { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
-    .cl-val { font-family:var(--serif); font-size:22px; font-style:italic; }
-    .cl-arrow { color:var(--accent); font-size:20px; opacity:0; transform:translateX(-6px); transition:opacity 0.2s, transform 0.2s; }
-    .contact-link:hover .cl-arrow { opacity:1; transform:translateX(0); }
-    .avail { display:inline-flex; align-items:center; gap:10px; margin-top:36px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:10px 18px; }
-    .avail-dot { width:7px; height:7px; border-radius:50%; background:#3dbe7a; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
-    .contact-card { background:var(--surface); border:1px solid var(--border); padding:44px; }
-    .contact-card-title { font-family:var(--serif); font-size:28px; font-style:italic; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
-    .ideal-client-list { list-style:none; display:flex; flex-direction:column; }
-    .ideal-client-list li { display:flex; align-items:flex-start; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); font-size:14px; line-height:1.6; color:var(--muted); }
-    .ideal-client-list li::before { content:'✓'; color:var(--accent); font-size:12px; margin-top:3px; flex-shrink:0; }
-    .ideal-client-list li span { color:var(--text); font-weight:500; }
-    .contact-card-note { margin-top:24px; font-size:13px; line-height:1.75; color:var(--muted); font-style:italic; }
-    footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
+
+    .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .work-card { background:var(--surface); padding:36px 36px 32px; border:1px solid var(--border); transition:border-color 0.25s, background 0.25s; display:flex; flex-direction:column; text-decoration:none; color:var(--text); }
+    .work-card:hover { border-color:var(--accent); background:var(--accent-dim); }
+
+    .wc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+    .wc-category { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); opacity:0.8; }
+    .wc-logo { width:28px; height:28px; border-radius:4px; object-fit:contain; opacity:0.7; flex-shrink:0; }
+    .wc-logo-placeholder { width:28px; height:28px; border-radius:4px; background:var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--muted); font-weight:600; letter-spacing:0.05em; }
+
+    .wc-title { font-family:var(--serif); font-size:21px; font-weight:700; line-height:1.2; margin-bottom:12px; }
+    .wc-desc { font-size:13px; line-height:1.75; color:var(--muted); margin-bottom:20px; flex-grow:1; }
+    .wc-publisher { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:16px; }
+    .wc-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; }
+    .wc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; }
+    .work-card:hover .wc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
+    .wc-arrow { display:flex; justify-content:flex-end; margin-top:16px; color:var(--accent); font-size:18px; opacity:0; transition:opacity 0.2s; }
+    .work-card:hover .wc-arrow { opacity:1; }
+
+    footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; margin-top:80px; }
     .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
     .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
     .footer-note { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--border); }
+
     .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity:1; transform:none; }
+
     @media (max-width: 960px) {
-      .topbar, .hero, #services, #industries, #process, #contact, footer { padding-left:24px; padding-right:24px; }
-      .hero, #contact { grid-template-columns:1fr; gap:48px; }
-      .hero-sidebar { border-left:none; border-top:1px solid var(--border); padding-left:0; padding-top:32px; }
-      .services-grid, .process-steps { grid-template-columns:1fr; }
-      .step::after { display:none; }
-      #industries { grid-template-columns:1fr; gap:40px; }
-      .industries-list { grid-template-columns:1fr; }
+      .topbar, .page-hero, #work, footer { padding-left:24px; padding-right:24px; }
+      .work-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
+
 <div class="topbar">
-  <a href="/index.html" class="topbar-left">Ghostwriter &nbsp;·&nbsp; Business &amp; Leadership</a>
+  <a href="/index.html" class="topbar-left">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</a>
   <nav class="topbar-nav">
-    <a href="#services">Services</a>
-    <a href="#industries">Industries</a>
-    <a href="#process">Process</a>
-    <a href="/work.html">See My Work</a>
-    <a href="#contact">Work Together</a>
+    <a href="/index.html#services">Services</a>
+    <a href="/index.html#industries">Industries</a>
+    <a href="/index.html#process">Process</a>
+    <a href="/work.html" class="active">See My Work</a>
+    <a href="/index.html#contact">Work Together</a>
   </nav>
 </div>
-<section class="hero">
-  <div class="reveal">
-    <div class="hero-eyebrow">Ghostwriter for Business Leaders</div>
-    <h1 class="hero-headline">Your ideas.<br/><em>My words.</em><br/>Their attention.</h1>
-    <p class="hero-body">I help executives, founders, and operators find their voice — and place it where it matters. Thought leadership, books, speeches, and beyond. Confidential, always.</p>
-    <div class="cta-row">
-      <a href="#contact" class="btn-primary">Let's Talk</a>
-      <a href="/work.html" class="btn-ghost">See My Work</a>
-    </div>
+
+<section class="page-hero reveal">
+  <div class="hero-eyebrow">Portfolio</div>
+  <h1 class="page-headline">Selected <em>work.</em></h1>
+  <p class="page-sub">A cross-section of content strategy, thought leadership, media relations, and demand generation work across fintech, ESG, private capital, and more.</p>
+</section>
+
+<section id="work">
+  <div class="section-header reveal">
+    <h2 class="section-title">Work Samples</h2>
+    <span class="section-note">30 Projects</span>
   </div>
-  <div class="hero-sidebar reveal" data-delay="150">
-    <div class="sidebar-row"><div class="sr-label">Experience</div><div class="sr-value"><strong>20+</strong> years writing</div></div>
-    <div class="sidebar-row"><div class="sr-label">Content Produced</div><div class="sr-value"><strong>100+</strong> articles &amp; essays</div></div>
-    <div class="sidebar-row"><div class="sr-label">Speciality</div><div class="sr-value">Business &amp; leadership voice</div></div>
-    <div class="sidebar-row"><div class="sr-label">Discretion</div><div class="sr-value">NDAs standard, always</div></div>
+  <div class="work-grid">
+
+    <!-- Card 1 -->
+    <a href="https://fortune.com/2021/06/13/nasdaq-board-diversity-people-with-disabilities-labor-force/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=fortune.com&sz=64" alt="Fortune" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Disability Inclusion in the Boardroom</div>
+      <div class="wc-desc">Placed an op-ed for Ted Kennedy, Jr. on Nasdaq board diversity and disability inclusion in the workforce.</div>
+      <div class="wc-publisher">Fortune</div>
+      <div class="wc-tags"><span class="wc-tag">ESG</span><span class="wc-tag">Fortune</span><span class="wc-tag">Op-Ed</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="https://www.fastcompany.com/brands-that-matter/2021" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=fastcompany.com&sz=64" alt="Fast Company" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Fast Company Brand That Matters Award</div>
+      <div class="wc-desc">Secured Fast Company's Brand that Matters award for a national nonprofit driving social impact.</div>
+      <div class="wc-publisher">Fast Company</div>
+      <div class="wc-tags"><span class="wc-tag">Fast Company</span><span class="wc-tag">Awards</span><span class="wc-tag">Social Impact</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="https://airtable.com/appxc4FZswhDnAWdU/tbluDAC4GfYl3flho/viwmxEx5w41kDK5GT/reciD8XivehoBl6MM/fldv3K8agNgCRiKTR" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="LinkedIn" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">LinkedIn Article Series for a Growth-Equity Managing Partner</div>
+      <div class="wc-desc">Ongoing LinkedIn article series establishing a growth-equity firm's Managing Partner as a leading voice in private capital.</div>
+      <div class="wc-publisher">LinkedIn</div>
+      <div class="wc-tags"><span class="wc-tag">LinkedIn</span><span class="wc-tag">Industry POV</span><span class="wc-tag">Private Capital</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="https://drive.google.com/file/d/17X6IACS4HQawqlX-U1s6oqi42j-F49-j/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Executive Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=64" alt="Google Drive" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">CEO Annual Letter for an Executive Search & Board Advisory Firm</div>
+      <div class="wc-desc">Crafted a CEO annual letter for a prestigious executive search and board advisory firm, reinforcing thought leadership and client relationships.</div>
+      <div class="wc-tags"><span class="wc-tag">Annual Letter</span><span class="wc-tag">Executive Search</span><span class="wc-tag">Customer Communications</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="https://drive.google.com/file/d/1e32SPHI8gsNGkp_8Bqx2mWDSTVBy4JxE/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Executive Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="LinkedIn" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Crypto & Web3 Article for an Executive Search Firm Partner</div>
+      <div class="wc-desc">Ghostwrote a LinkedIn article for a partner at a leading executive search firm on crypto and Web3 talent markets.</div>
+      <div class="wc-publisher">LinkedIn</div>
+      <div class="wc-tags"><span class="wc-tag">Crypto</span><span class="wc-tag">LinkedIn</span><span class="wc-tag">Executive Search</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 6 -->
+    <a href="http://www.bizjournals.com/bizjournals/how-to/funding/2016/08/theres-no-free-college.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=bizjournals.com&sz=64" alt="Biz Journals" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Op-Ed for CEO of a Private Student Loan Company</div>
+      <div class="wc-desc">Placed an op-ed for the CEO of a private student lending company on the realities of college financing.</div>
+      <div class="wc-publisher">American City Business Journals</div>
+      <div class="wc-tags"><span class="wc-tag">ACBJ</span><span class="wc-tag">Lending</span><span class="wc-tag">Op-Ed</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 7 -->
+    <a href="http://www.huffingtonpost.co.uk/kris-green/china-economy_b_6706254.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=huffpost.com&sz=64" alt="HuffPost" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">China E-Commerce Article for a Chief Strategy Officer</div>
+      <div class="wc-desc">Ghostwrote a HuffPost article for the Chief Strategy Officer of an e-commerce company on China's evolving digital economy.</div>
+      <div class="wc-publisher">HuffPost</div>
+      <div class="wc-tags"><span class="wc-tag">China</span><span class="wc-tag">E-Commerce</span><span class="wc-tag">Huffington Post</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 8 -->
+    <a href="https://drive.google.com/file/d/1PbweLdqfyiOZovIjSHWIeYcbdRUdi-Rp/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=64" alt="Google Drive" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Econometric Report on South Korea's Online Retail Market</div>
+      <div class="wc-desc">Produced a data-driven econometric report for an e-commerce company analyzing South Korea's online retail landscape and growth opportunity.</div>
+      <div class="wc-tags"><span class="wc-tag">South Korea</span><span class="wc-tag">Online Retail</span><span class="wc-tag">Reports</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 9 -->
+    <a href="https://www.fastcompany.com/90690646/disability-is-the-missing-piece-in-the-dei-puzzle" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=fastcompany.com&sz=64" alt="Fast Company" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Disability Is the Missing Piece in the DEI Puzzle</div>
+      <div class="wc-desc">Fast Company sponsored article for a national disability nonprofit making the business case for disability inclusion as a core DEI priority.</div>
+      <div class="wc-publisher">Fast Company</div>
+      <div class="wc-tags"><span class="wc-tag">Social Impact</span><span class="wc-tag">Fast Company</span><span class="wc-tag">DEI</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 10 -->
+    <a href="https://www.directorsandboards.com/board-composition/board-diversity/increasing-disability-representation-on-corporate-boards/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=directorsandboards.com&sz=64" alt="Directors & Boards" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Increasing Disability Representation on Corporate Boards</div>
+      <div class="wc-desc">Placed an op-ed for Ted Kennedy, Jr. in Directors & Boards on the urgent need for disability representation at the board level.</div>
+      <div class="wc-publisher">Directors & Boards</div>
+      <div class="wc-tags"><span class="wc-tag">Social Impact</span><span class="wc-tag">Boardroom</span><span class="wc-tag">Op-Ed</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 11 -->
+    <a href="https://www.cerebrocapital.com/blog/attract-more-lenders/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=cerebrocapital.com&sz=64" alt="Cerebro Capital" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Blog Series for a Commercial Lending Marketplace</div>
+      <div class="wc-desc">Produced a series of blog posts for a commercial lending marketplace, driving organic traffic and educating borrowers on financing options.</div>
+      <div class="wc-publisher">Cerebro Capital</div>
+      <div class="wc-tags"><span class="wc-tag">Lending</span><span class="wc-tag">Blogs</span><span class="wc-tag">Finance</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 12 -->
+    <a href="https://www.lendkey.com/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Content Strategy</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=lendkey.com&sz=64" alt="LendKey" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">New Website for a Lending-as-a-Service Company</div>
+      <div class="wc-desc">Led content strategy and wrote copy for a full website redesign for a lending-as-a-service platform, clarifying positioning and driving conversions.</div>
+      <div class="wc-publisher">LendKey</div>
+      <div class="wc-tags"><span class="wc-tag">Lending</span><span class="wc-tag">Website Copy</span><span class="wc-tag">Strategy</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 13 -->
+    <a href="https://www.prweb.com/releases/edison-partners-leads-62-million-investment-in-yieldstreet-872177233.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=prweb.com&sz=64" alt="PRWeb" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">$62M Funding Announcement for a Digital Wealth Management Firm</div>
+      <div class="wc-desc">Wrote and distributed a press release announcing a $62 million Series B investment in YieldStreet, led by Edison Partners.</div>
+      <div class="wc-publisher">PRWeb</div>
+      <div class="wc-tags"><span class="wc-tag">Press Release</span><span class="wc-tag">Finance</span><span class="wc-tag">Private Capital</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 14 -->
+    <a href="https://www.institutionalinvestor.com/article/b1bt7cnqx2k3tc/Chris-Sugden" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=institutionalinvestor.com&sz=64" alt="Institutional Investor" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Fintech Finance 40 Award for a Growth-Equity Managing Partner</div>
+      <div class="wc-desc">Secured placement on Institutional Investor's Fintech Finance 40 list for the Managing Partner of a growth-equity firm.</div>
+      <div class="wc-publisher">Institutional Investor</div>
+      <div class="wc-tags"><span class="wc-tag">Institutional Investor</span><span class="wc-tag">Awards</span><span class="wc-tag">Private Capital</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 15 -->
+    <a href="https://www.axial.net/forum/two-ways-lps-co-invest-worth/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=axial.net&sz=64" alt="Axial" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Finance Articles for a Middle-Market Advisory Marketplace</div>
+      <div class="wc-desc">Wrote a series of articles on finance and deal-making topics for a leading middle-market advisory marketplace, driving thought leadership and engagement.</div>
+      <div class="wc-publisher">Axial</div>
+      <div class="wc-tags"><span class="wc-tag">Finance</span><span class="wc-tag">M&A</span><span class="wc-tag">Blogs</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 16 -->
+    <a href="https://www.forbes.com/sites/forbestechcouncil/2019/10/11/five-steps-to-better-data-quality-in-the-digital-economy" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=forbes.com&sz=64" alt="Forbes" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Five Steps to Better Data Quality in the Digital Economy</div>
+      <div class="wc-desc">Placed a Forbes Tech Council article for the GM of a credit bureau's marketing services division on data quality in the digital economy.</div>
+      <div class="wc-publisher">Forbes</div>
+      <div class="wc-tags"><span class="wc-tag">Forbes</span><span class="wc-tag">Marketing Data</span><span class="wc-tag">Tech</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 17 -->
+    <a href="https://drive.google.com/file/d/1O-BcknOAuwCSriGf8ByxxXCHiNsuoN24/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=pionline.com&sz=64" alt="P&I" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Three-Part Neurodiversity Special Report in Pensions & Investments</div>
+      <div class="wc-desc">Secured a three-part editorial series in Pensions & Investments for a national disability nonprofit, covering neurodiversity in the institutional investment space.</div>
+      <div class="wc-publisher">Pensions & Investments</div>
+      <div class="wc-tags"><span class="wc-tag">Neurodiversity</span><span class="wc-tag">Special Report</span><span class="wc-tag">Reputation</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 18 -->
+    <a href="https://www.lend360.org/4076-2/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=lend360.org&sz=64" alt="Lend360" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Article for a Vertical Leader in FinTech & AltFi at a Credit Bureau</div>
+      <div class="wc-desc">Ghostwrote an article for a senior fintech and alternative finance leader at a major credit bureau, positioning them as a subject matter expert in lending innovation.</div>
+      <div class="wc-publisher">Lend360</div>
+      <div class="wc-tags"><span class="wc-tag">Lending</span><span class="wc-tag">Credit</span><span class="wc-tag">Blogs</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 19 -->
+    <a href="https://www.joinaliro.com/insights/participation-loan/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=joinaliro.com&sz=64" alt="Aliro" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Educational Blog Series for a Credit Union Lending Platform</div>
+      <div class="wc-desc">Wrote a series of educational blog posts for a credit union lending platform, simplifying complex loan participation concepts for a financial services audience.</div>
+      <div class="wc-publisher">Aliro</div>
+      <div class="wc-tags"><span class="wc-tag">Lending</span><span class="wc-tag">Blog</span><span class="wc-tag">Credit Unions</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 20 -->
+    <a href="https://martechseries.com/mts-insights/interviews/techbytes-mykolas-rambus-general-manager-data-driven-marketing-equifax/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=martechseries.com&sz=64" alt="MarTech Series" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Q&A in MarTech Series for a Credit Bureau Marketing GM</div>
+      <div class="wc-desc">Secured and prepared a Q&A interview in MarTech Series for the GM of a credit bureau's marketing services group, building executive visibility in the martech space.</div>
+      <div class="wc-publisher">MarTech Series</div>
+      <div class="wc-tags"><span class="wc-tag">Credit Bureau</span><span class="wc-tag">Marketing</span><span class="wc-tag">Q&A</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 21 -->
+    <a href="https://drive.google.com/file/d/1iVu0ej9bTkCYlqewe9ZxzP1HjxnrtcEO/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=64" alt="Google Drive" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Annual Report on Corporate Disability Inclusion for a Global Nonprofit</div>
+      <div class="wc-desc">Wrote and produced an annual report on corporate disability inclusion for a global nonprofit, synthesizing research and data into a compelling, credibility-building publication.</div>
+      <div class="wc-tags"><span class="wc-tag">Social Impact</span><span class="wc-tag">Reports</span><span class="wc-tag">DEI</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 22 -->
+    <a href="https://news.crunchbase.com/startups/legaltech-hypergrowth-legalzoom-startups-venture-raj-goyle-onit/" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Thought Leadership</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=crunchbase.com&sz=64" alt="Crunchbase" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Op-Ed for the CEO of a Legal Tech Start-Up</div>
+      <div class="wc-desc">Placed an op-ed for the CEO of a high-growth legal tech company in Crunchbase News, making the case for legaltech's hypergrowth moment.</div>
+      <div class="wc-publisher">Crunchbase News</div>
+      <div class="wc-tags"><span class="wc-tag">Crunchbase</span><span class="wc-tag">Legal Tech</span><span class="wc-tag">Op-Ed</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 23 -->
+    <a href="https://www.bizjournals.com/triad/bizwomen/news/profiles-strategies/2023/12/in-her-own-words-nicole-cuervo.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Executive Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=bizjournals.com&sz=64" alt="BizWomen" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Founder Profile for an Adaptive Bra Company</div>
+      <div class="wc-desc">Wrote a first-person byline for the founder of an adaptive bra company, profiling her entrepreneurial journey for BizWomen's national audience.</div>
+      <div class="wc-publisher">BizWomen</div>
+      <div class="wc-tags"><span class="wc-tag">Retail</span><span class="wc-tag">BizWomen</span><span class="wc-tag">Profiles</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 24 -->
+    <a href="https://www.bloomberg.com/news/articles/2021-02-23/nasdaq-urged-to-widen-diversity-rules-by-disability-activists" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=bloomberg.com&sz=64" alt="Bloomberg" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Bloomberg Placement for a National Disability Nonprofit</div>
+      <div class="wc-desc">Secured earned media coverage in Bloomberg for a national disability nonprofit urging Nasdaq to expand its board diversity rules to include disability.</div>
+      <div class="wc-publisher">Bloomberg</div>
+      <div class="wc-tags"><span class="wc-tag">Earned Media</span><span class="wc-tag">Social Impact</span><span class="wc-tag">Business Media</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 25 -->
+    <a href="https://www.axios.com/nasdaq-board-diversity-disabilities-b61a375c-96d1-4199-8b4f-2e001c8d5caf.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=axios.com&sz=64" alt="Axios" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Axios Placement for a National Disability Nonprofit</div>
+      <div class="wc-desc">Secured earned media coverage in Axios for a national disability nonprofit on Nasdaq board diversity and disability representation.</div>
+      <div class="wc-publisher">Axios</div>
+      <div class="wc-tags"><span class="wc-tag">Earned Media</span><span class="wc-tag">Social Impact</span><span class="wc-tag">Business Media</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 26 -->
+    <a href="https://www.fastcompany.com/90949665/microsoft-satya-nadella-lowes-marvin-ellison-disability-inclusion" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=fastcompany.com&sz=64" alt="Fast Company" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Fast Company Placement for a National Disability Nonprofit</div>
+      <div class="wc-desc">Secured earned media coverage in Fast Company for a national disability nonprofit on disability inclusion at Microsoft, Lowe's, and other major corporations.</div>
+      <div class="wc-publisher">Fast Company</div>
+      <div class="wc-tags"><span class="wc-tag">Earned Media</span><span class="wc-tag">Social Impact</span><span class="wc-tag">Business Media</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 27 -->
+    <a href="https://www.nytimes.com/2023/07/19/business/disability-accommodations-workplace.html" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=nytimes.com&sz=64" alt="New York Times" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">New York Times Placement for a National Disability Nonprofit</div>
+      <div class="wc-desc">Secured earned media coverage in The New York Times for a national disability nonprofit on workplace disability accommodations.</div>
+      <div class="wc-publisher">The New York Times</div>
+      <div class="wc-tags"><span class="wc-tag">Earned Media</span><span class="wc-tag">Social Impact</span><span class="wc-tag">Business Media</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 28 -->
+    <a href="https://www.businessinsider.com/100-people-transforming-business-2021?person=jill-houghton" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Media Relations</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=businessinsider.com&sz=64" alt="Business Insider" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Business Insider 100 People Transforming Business List</div>
+      <div class="wc-desc">Secured placement on Business Insider's 100 People Transforming Business list for the CEO of a national disability nonprofit.</div>
+      <div class="wc-publisher">Business Insider</div>
+      <div class="wc-tags"><span class="wc-tag">Social Impact</span><span class="wc-tag">Awards</span><span class="wc-tag">Business Insider</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 29 -->
+    <a href="https://drive.google.com/file/d/1Y50V7HvqWO4_cqzUDNbKc8IAzj3NTukq/view?usp=drive_link" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Demand Generation Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=64" alt="Google Drive" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Financing Guide for a Commercial Lending Marketplace</div>
+      <div class="wc-desc">Produced a comprehensive financing guide for a commercial lending marketplace, helping borrowers navigate complex lending options and driving qualified leads.</div>
+      <div class="wc-tags"><span class="wc-tag">Lending</span><span class="wc-tag">Reports</span><span class="wc-tag">Finance</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
+    <!-- Card 30 -->
+    <a href="https://airtable.com/appxc4FZswhDnAWdU/tbluDAC4GfYl3flho/viwmxEx5w41kDK5GT/recXYZyWawmfZCGBx/fldv3K8agNgCRiKTR" target="_blank" class="work-card reveal">
+      <div class="wc-top">
+        <div class="wc-category">Executive Content</div>
+        <img class="wc-logo" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="Airtable" onerror="this.style.display='none'"/>
+      </div>
+      <div class="wc-title">Letter from the CEO of a Legal Tech Start-Up</div>
+      <div class="wc-desc">Ghostwrote a CEO letter for a high-growth legal tech start-up, building trust with customers and reinforcing the company's vision and momentum.</div>
+      <div class="wc-tags"><span class="wc-tag">Legal Tech</span><span class="wc-tag">CEO Letter</span><span class="wc-tag">Customer Communications</span></div>
+      <div class="wc-arrow">→</div>
+    </a>
+
   </div>
 </section>
-<section id="services">
-  <div class="section-header reveal"><h2 class="section-title">What I Write</h2><span class="section-note">Formats &amp; Deliverables</span></div>
-  <div class="services-grid">
-    <div class="service-card reveal"><div class="sc-num">01</div><div class="sc-title">Thought Leadership Articles</div><p class="sc-body">LinkedIn essays, op-eds, and platform-specific content that positions you as the go-to voice in your field.</p><div class="sc-tags"><span class="sc-tag">LinkedIn</span><span class="sc-tag">Op-Ed</span><span class="sc-tag">Industry Press</span><span class="sc-tag">Substack</span></div></div>
-    <div class="service-card reveal"><div class="sc-num">02</div><div class="sc-title">Books &amp; Long-Form</div><p class="sc-body">Business books, manifestos, and long-form narratives that codify your thinking and build lasting authority.</p><div class="sc-tags"><span class="sc-tag">Business Books</span><span class="sc-tag">Memoir</span><span class="sc-tag">Manifestos</span><span class="sc-tag">Reports</span></div></div>
-    <div class="service-card reveal"><div class="sc-num">03</div><div class="sc-title">Speeches &amp; Keynotes</div><p class="sc-body">High-stakes spoken-word content for conference stages, AGMs, and internal all-hands.</p><div class="sc-tags"><span class="sc-tag">Keynotes</span><span class="sc-tag">Conference Talks</span><span class="sc-tag">Board Comms</span></div></div>
-    <div class="service-card reveal"><div class="sc-num">04</div><div class="sc-title">Executive Newsletters</div><p class="sc-body">Ongoing editorial programmes that keep you visible and relevant — weekly, biweekly, or monthly.</p><div class="sc-tags"><span class="sc-tag">Email</span><span class="sc-tag">Substack</span><span class="sc-tag">Internal Comms</span></div></div>
-    <div class="service-card reveal"><div class="sc-num">05</div><div class="sc-title">Strategic Narratives</div><p class="sc-body">Company origin stories, investor narratives, and brand messaging frameworks.</p><div class="sc-tags"><span class="sc-tag">Brand Story</span><span class="sc-tag">Investor Deck Copy</span><span class="sc-tag">About Pages</span></div></div>
-    <div class="service-card reveal"><div class="sc-num">06</div><div class="sc-title">Interview-to-Draft</div><p class="sc-body">You talk, I write. One conversation becomes a polished, publication-ready piece.</p><div class="sc-tags"><span class="sc-tag">Fast Turnaround</span><span class="sc-tag">Voice Matching</span><span class="sc-tag">Any Format</span></div></div>
-  </div>
-</section>
-<section id="industries">
-  <div class="industries-intro reveal">
-    <h2 class="section-title">Industries<br/>I Write For</h2>
-    <p>Deep familiarity with the language, stakes, and audiences that matter in each sector.</p>
-  </div>
-  <div class="industries-list">
-    <div class="industry-item reveal"><div><div class="ii-name">Finance &amp; Fintech</div><div class="ii-desc">Investment theses, market commentary, regulatory opinion, founder narratives</div></div><span class="ii-arrow">→</span></div>
-    <div class="industry-item reveal"><div><div class="ii-name">Technology &amp; SaaS</div><div class="ii-desc">Product leadership, AI commentary, engineering culture, go-to-market narrative</div></div><span class="ii-arrow">→</span></div>
-    <div class="industry-item reveal"><div><div class="ii-name">Professional Services</div><div class="ii-desc">Consulting, law, accounting — expertise translated into readable authority</div></div><span class="ii-arrow">→</span></div>
-    <div class="industry-item reveal"><div><div class="ii-name">Healthcare &amp; Life Sciences</div><div class="ii-desc">Clinical leadership, health policy, patient advocacy, pharma strategy</div></div><span class="ii-arrow">→</span></div>
-    <div class="industry-item reveal"><div><div class="ii-name">Real Estate &amp; Infrastructure</div><div class="ii-desc">Development narratives, urban commentary, sustainability positioning</div></div><span class="ii-arrow">→</span></div>
-    <div class="industry-item reveal"><div><div class="ii-name">Consumer &amp; Retail</div><div class="ii-desc">Brand founders, retail innovation, consumer culture, trend leadership</div></div><span class="ii-arrow">→</span></div>
-  </div>
-</section>
-<section id="process">
-  <div class="section-header reveal"><h2 class="section-title">How It Works</h2><span class="section-note">From Brief to Published</span></div>
-  <div class="process-steps">
-    <div class="step reveal"><div class="step-num">01</div><div class="step-title">Discovery Call</div><p class="step-body">30–60 minutes to understand your voice, your audience, your goals, and what you absolutely don't want to say.</p></div>
-    <div class="step reveal"><div class="step-num">02</div><div class="step-title">Voice Capture</div><p class="step-body">I analyse existing materials — emails, talks, interviews — to map the cadence, vocabulary, and tone that is distinctly yours.</p></div>
-    <div class="step reveal"><div class="step-num">03</div><div class="step-title">Draft &amp; Refine</div><p class="step-body">First draft delivered. Two rounds of revision included as standard. Most clients barely touch it.</p></div>
-    <div class="step reveal"><div class="step-num">04</div><div class="step-title">Publish &amp; Own</div><p class="step-body">You publish under your name. Full rights transfer. I disappear. The NDA was signed on day one.</p></div>
-  </div>
-</section>
-<section id="contact">
-  <div class="reveal">
-    <h2 class="contact-headline">Ready to<br/><em>build your</em><br/>voice?</h2>
-    <p class="contact-sub">I work with a small number of clients at a time. If the fit is right, let's talk.</p>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/suzannerobitaille/" target="_blank" class="contact-link">
-        <div><div class="cl-type">LinkedIn</div><div class="cl-val">linkedin.com/in/suzannerobitaille</div></div>
-        <span class="cl-arrow">→</span>
-      </a>
-      <a href="https://calendly.com/suerobitaille/30min" target="_blank" class="contact-link">
-        <div><div class="cl-type">Book a Call</div><div class="cl-val">calendly.com/suerobitaille</div></div>
-        <span class="cl-arrow">→</span>
-      </a>
-    </div>
-    <div class="avail"><span class="avail-dot"></span>Accepting new clients — April 2026</div>
-  </div>
-  <div class="reveal" data-delay="150">
-    <div class="contact-card">
-      <div class="contact-card-title">You're probably a good fit if…</div>
-      <ul class="ideal-client-list">
-        <li><span>You're a senior leader</span> with genuine expertise but no time to write</li>
-        <li><span>You want to own a point of view</span> in your industry, not just post content</li>
-        <li><span>You value discretion</span> and understand ghostwriting is a profession</li>
-        <li><span>You have a clear audience</span> — a board, an industry, a market — you're trying to reach</li>
-        <li><span>You're building something</span> — a company, a legacy, a book — and words are part of it</li>
-      </ul>
-      <p class="contact-card-note">All engagements begin with a no-obligation discovery call. NDAs signed before any materials are shared.</p>
-    </div>
-  </div>
-</section>
+
 <footer>
   <span class="footer-name">Suzanne Robitaille</span>
-  <span class="footer-note">All client work is confidential</span>
+  <span class="footer-note">Content Strategy · Growth-Stage Companies</span>
   <span class="footer-copy">© 2026</span>
 </footer>
+
 <script>
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {

@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suzanne Robitaille — Content Strategist for Growth-Stage Companies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --surface: #f5f5f3; --border: #e0e0da;
+      --text: #111110; --muted: #6b6860; --accent: #4aacaa;
+      --accent-dim: rgba(74,172,170,0.12);
+      --sans: 'Instrument Sans', sans-serif;
+      --serif: 'Cormorant Garamond', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
+    .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-left:hover { color: var(--accent); }
+    .topbar-nav { display:flex; gap:36px; align-items:center; }
+    .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+    .topbar-nav a:hover { color:var(--accent); }
+    .hero { padding:100px 56px 80px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 360px; gap:80px; align-items:end; }
+    .hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
+    .hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--accent); display:block; }
+    .hero-headline { font-family:var(--serif); font-size:clamp(52px,7vw,96px); font-weight:700; line-height:0.95; letter-spacing:-0.01em; margin-bottom:32px; }
+    .hero-headline em { font-style:italic; color:var(--accent); }
+    .hero-body { font-size:16px; line-height:1.8; color:var(--muted); max-width:520px; margin-bottom:40px; }
+    .cta-row { display:flex; gap:16px; align-items:center; }
+    .btn-primary { display:inline-block; padding:14px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s; font-family:var(--sans); }
+    .btn-primary:hover { opacity:0.85; }
+    .btn-ghost { display:inline-block; padding:14px 28px; border:1px solid var(--border); color:var(--muted); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; background:none; transition:border-color 0.2s, color 0.2s; font-family:var(--sans); }
+    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+    .hero-sidebar { border-left:1px solid var(--border); padding-left:48px; display:flex; flex-direction:column; }
+    .sidebar-row { padding:20px 0; border-bottom:1px solid var(--border); }
+    .sidebar-row:first-child { border-top:1px solid var(--border); }
+    .sr-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .sr-value { font-family:var(--serif); font-size:20px; font-style:italic; }
+    .sr-value strong { font-family:var(--sans); font-style:normal; font-size:26px; font-weight:600; color:var(--accent); }
+    #services { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:48px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .section-title { font-family:var(--serif); font-size:42px; font-weight:700; font-style:italic; }
+    .section-note { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .service-card { background:var(--surface); padding:40px 36px; border:1px solid var(--border); transition:border-color 0.25s, background 0.25s; }
+    .service-card:hover { border-color:var(--accent); background:var(--accent-dim); }
+    .sc-num { font-size:11px; letter-spacing:0.2em; color:var(--accent); margin-bottom:24px; opacity:0.7; }
+    .sc-title { font-family:var(--serif); font-size:28px; font-weight:700; line-height:1.1; margin-bottom:16px; }
+    .sc-body { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
+    .sc-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .sc-tag { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:4px 10px; }
+    .service-card:hover .sc-tag { color:var(--accent); border-color:var(--accent); opacity:0.7; }
+    #industries { padding:80px 56px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:320px 1fr; gap:80px; }
+    .industries-intro p { font-size:14px; line-height:1.85; color:var(--muted); margin-top:20px; }
+    .industries-list { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    .industry-item { padding:28px 32px; border:1px solid var(--border); background:var(--surface); display:flex; justify-content:space-between; align-items:flex-start; gap:16px; transition:border-color 0.2s; }
+    .industry-item:hover { border-color:var(--accent); }
+    .ii-name { font-family:var(--serif); font-size:22px; font-style:italic; margin-bottom:8px; }
+    .ii-desc { font-size:12px; color:var(--muted); line-height:1.6; }
+    .ii-arrow { color:var(--accent); font-size:18px; opacity:0; transition:opacity 0.2s; flex-shrink:0; margin-top:4px; }
+    .industry-item:hover .ii-arrow { opacity:1; }
+    #process { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:48px; }
+    .step { padding:36px 32px; border:1px solid var(--border); background:var(--surface); position:relative; }
+    .step::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); color:var(--accent); font-size:18px; z-index:1; }
+    .step:last-child::after { display:none; }
+    .step-num { font-size:48px; font-family:var(--serif); font-weight:700; color:var(--border); line-height:1; margin-bottom:16px; }
+    .step-title { font-size:14px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; }
+    .step-body { font-size:13px; line-height:1.75; color:var(--muted); }
+    #contact { padding:100px 56px; display:grid; grid-template-columns:1fr 1fr; gap:100px; }
+    .contact-headline { font-family:var(--serif); font-size:clamp(44px,6vw,72px); font-weight:700; line-height:0.98; margin-bottom:16px; }
+    .contact-headline em { font-style:italic; color:var(--accent); }
+    .contact-sub { font-size:13px; line-height:1.8; color:var(--muted); margin-bottom:48px; max-width:380px; }
+    .contact-links { display:flex; flex-direction:column; }
+    .contact-link { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--text); transition:padding-left 0.25s; }
+    .contact-link:hover { padding-left:12px; }
+    .cl-type { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+    .cl-val { font-family:var(--serif); font-size:22px; font-style:italic; }
+    .cl-arrow { color:var(--accent); font-size:20px; opacity:0; transform:translateX(-6px); transition:opacity 0.2s, transform 0.2s; }
+    .contact-link:hover .cl-arrow { opacity:1; transform:translateX(0); }
+    .avail { display:inline-flex; align-items:center; gap:10px; margin-top:36px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:10px 18px; }
+    .avail-dot { width:7px; height:7px; border-radius:50%; background:#3dbe7a; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+    .contact-card { background:var(--surface); border:1px solid var(--border); padding:44px; }
+    .contact-card-title { font-family:var(--serif); font-size:28px; font-style:italic; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .ideal-client-list { list-style:none; display:flex; flex-direction:column; }
+    .ideal-client-list li { display:flex; align-items:flex-start; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); font-size:14px; line-height:1.6; color:var(--muted); }
+    .ideal-client-list li::before { content:'✓'; color:var(--accent); font-size:12px; margin-top:3px; flex-shrink:0; }
+    .ideal-client-list li span { color:var(--text); font-weight:500; }
+    .contact-card-note { margin-top:24px; font-size:13px; line-height:1.75; color:var(--muted); font-style:italic; }
+    .contact-form { margin-top:40px; padding-top:40px; border-top:1px solid var(--border); }
+    .contact-form-title { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+    .form-field { display:flex; flex-direction:column; margin-bottom:16px; }
+    .form-field input, .form-field textarea { background:var(--bg); border:1px solid var(--border); padding:12px 16px; font-family:var(--sans); font-size:13px; color:var(--text); transition:border-color 0.2s; outline:none; resize:none; }
+    .form-field input:focus, .form-field textarea:focus { border-color:var(--accent); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color:var(--muted); opacity:0.6; }
+    .form-submit { display:inline-block; padding:12px 28px; background:var(--accent); color:var(--bg); font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; border:none; cursor:pointer; font-family:var(--sans); transition:opacity 0.2s; width:100%; }
+    .form-submit:hover { opacity:0.85; }
+    .form-success { display:none; padding:16px; background:var(--accent-dim); border:1px solid var(--accent); font-size:13px; color:var(--accent); margin-top:12px; }
+    footer { border-top:1px solid var(--border); padding:20px 56px; display:flex; justify-content:space-between; align-items:center; }
+    .footer-name { font-family:var(--serif); font-size:15px; font-style:italic; color:var(--muted); }
+    .footer-copy { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    .footer-note { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--border); }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    @media (max-width: 960px) {
+      .topbar, .hero, #services, #industries, #process, #contact, footer { padding-left:24px; padding-right:24px; }
+      .hero, #contact { grid-template-columns:1fr; gap:48px; }
+      .hero-sidebar { border-left:none; border-top:1px solid var(--border); padding-left:0; padding-top:32px; }
+      .services-grid, .process-steps { grid-template-columns:1fr; }
+      .step::after { display:none; }
+      #industries { grid-template-columns:1fr; gap:40px; }
+      .industries-list { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/index.html" class="topbar-left">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</a>
+  <nav class="topbar-nav">
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#process">Process</a>
+    <a href="/work.html">See My Work</a>
+    <a href="#contact">Work Together</a>
+  </nav>
+</div>
+
+<section class="hero">
+  <div class="reveal">
+    <div class="hero-eyebrow">Senior Content Strategist</div>
+    <h1 class="hero-headline">Content that <em>builds</em> companies.</h1>
+    <p class="hero-body">I help growth-stage companies turn expertise into traction — through content strategies, editorial programs, and narratives that resonate with the right audiences at the right moment. From Series A to scale, I've been embedded with the teams doing the hard work of growing.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">Let's Talk</a>
+      <a href="/work.html" class="btn-ghost">See My Work</a>
+    </div>
+  </div>
+  <div class="hero-sidebar reveal" data-delay="150">
+    <div class="sidebar-row"><div class="sr-label">Experience</div><div class="sr-value"><strong>20+</strong> years in content</div></div>
+    <div class="sidebar-row"><div class="sr-label">Content Produced</div><div class="sr-value"><strong>100+</strong> articles &amp; campaigns</div></div>
+    <div class="sidebar-row"><div class="sr-label">Specialty</div><div class="sr-value">B2B &amp; growth-stage strategy</div></div>
+    <div class="sidebar-row"><div class="sr-label">Focus</div><div class="sr-value">Pipeline, brand &amp; authority</div></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-header reveal">
+    <h2 class="section-title">What I Do</h2>
+    <span class="section-note">Services &amp; Deliverables</span>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="sc-num">01</div>
+      <div class="sc-title">Content Strategy</div>
+      <p class="sc-body">End-to-end content programs built around your growth goals — audience mapping, editorial calendars, channel strategy, and measurable outcomes. Not just a plan. A system.</p>
+      <div class="sc-tags"><span class="sc-tag">Editorial Planning</span><span class="sc-tag">Audience Mapping</span><span class="sc-tag">Channel Strategy</span><span class="sc-tag">Metrics</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">02</div>
+      <div class="sc-title">Thought Leadership</div>
+      <p class="sc-body">Op-eds, bylined articles, and platform content that puts your founders and executives in front of the audiences that matter — investors, customers, and future hires.</p>
+      <div class="sc-tags"><span class="sc-tag">Op-Eds</span><span class="sc-tag">LinkedIn</span><span class="sc-tag">Industry Press</span><span class="sc-tag">Substack</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">03</div>
+      <div class="sc-title">Brand Narrative</div>
+      <p class="sc-body">The story underneath everything else — your origin, your why, your differentiation. Messaging frameworks and brand narratives that give your team a shared language and your market a reason to care.</p>
+      <div class="sc-tags"><span class="sc-tag">Messaging Frameworks</span><span class="sc-tag">Brand Story</span><span class="sc-tag">Positioning</span><span class="sc-tag">About Pages</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">04</div>
+      <div class="sc-title">Demand Generation Content</div>
+      <p class="sc-body">Content that works further down the funnel — case studies, white papers, sales enablement, and nurture sequences that move prospects from aware to ready.</p>
+      <div class="sc-tags"><span class="sc-tag">Case Studies</span><span class="sc-tag">White Papers</span><span class="sc-tag">Sales Enablement</span><span class="sc-tag">Email Nurture</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">05</div>
+      <div class="sc-title">Executive Content Programs</div>
+      <p class="sc-body">Ongoing content programs for founders and C-suite leaders — keeping them visible, credible, and vocal across the channels their stakeholders actually read.</p>
+      <div class="sc-tags"><span class="sc-tag">LinkedIn Strategy</span><span class="sc-tag">Newsletters</span><span class="sc-tag">Speaking Content</span><span class="sc-tag">Calendars</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">06</div>
+      <div class="sc-title">Content Audits &amp; Advisory</div>
+      <p class="sc-body">A clear-eyed look at what you have, what's working, and what to do next. Ideal for companies between content hires or scaling a team for the first time.</p>
+      <div class="sc-tags"><span class="sc-tag">Content Audit</span><span class="sc-tag">Gap Analysis</span><span class="sc-tag">Team Advisory</span><span class="sc-tag">Hiring Support</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="sc-num">07</div>
+      <div class="sc-title">Media Relations</div>
+      <p class="sc-body">Earned media strategy and execution for growth-stage companies that have a story worth telling. From press release to placement — pitching journalists, building reporter relationships, and securing coverage in the outlets your buyers and investors actually read.</p>
+      <div class="sc-tags"><span class="sc-tag">Press Strategy</span><span class="sc-tag">Journalist Outreach</span><span class="sc-tag">Press Releases</span><span class="sc-tag">Earned Media</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="industries-intro reveal">
+    <h2 class="section-title">Industries<br/>I Know Well</h2>
+    <p>Growth-stage companies succeed when their content speaks the language of their market. I bring deep sector familiarity — not a generalist's approximation.</p>
+  </div>
+  <div class="industries-list">
+    <div class="industry-item reveal"><div><div class="ii-name">Fintech &amp; Financial Services</div><div class="ii-desc">B2B fintech, lending platforms, payments, wealth tech, regulatory content</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Technology &amp; SaaS</div><div class="ii-desc">Product-led growth, developer tools, AI/ML platforms, go-to-market narrative</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Healthcare &amp; Digital Health</div><div class="ii-desc">Health tech, telehealth, patient engagement, clinical leadership content</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">ESG &amp; Impact</div><div class="ii-desc">Sustainability strategy, DEI programs, disability inclusion, social equity</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Professional Services</div><div class="ii-desc">Consulting, legal tech, accounting — expertise made readable and compelling</div></div><span class="ii-arrow">→</span></div>
+    <div class="industry-item reveal"><div><div class="ii-name">Venture &amp; Private Equity</div><div class="ii-desc">Investment theses, portfolio company content, LP communications, market commentary</div></div><span class="ii-arrow">→</span></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-header reveal">
+    <h2 class="section-title">How I Work</h2>
+    <span class="section-note">From Brief to Results</span>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Discovery</div>
+      <p class="step-body">We start with your business goals, not a content brief. I need to understand where you're going before I can build a content program that helps you get there.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Strategy &amp; Plan</div>
+      <p class="step-body">A clear content strategy — audiences, channels, formats, cadence, and KPIs. Built around your growth stage, your team's capacity, and your market's expectations.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Create &amp; Execute</div>
+      <p class="step-body">I write, edit, and produce — or manage the people who do. Either way, quality stays consistent and deadlines get hit.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Measure &amp; Iterate</div>
+      <p class="step-body">Content without measurement is just noise. We track what matters, learn from what's working, and evolve the program as your company scales.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="reveal">
+    <h2 class="contact-headline">Ready to<br/><em>build something</em><br/>that grows?</h2>
+    <p class="contact-sub">I work with a focused number of companies at a time — so the work stays sharp and the attention stays real. If the fit is right, let's talk.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/suzannerobitaille/" target="_blank" class="contact-link">
+        <div><div class="cl-type">LinkedIn</div><div class="cl-val">linkedin.com/in/suzannerobitaille</div></div>
+        <span class="cl-arrow">→</span>
+      </a>
+      <a href="https://calendly.com/suerobitaille/30min" target="_blank" class="contact-link">
+        <div><div class="cl-type">Book a Call</div><div class="cl-val">calendly.com/suerobitaille</div></div>
+        <span class="cl-arrow">→</span>
+      </a>
+    </div>
+    <div class="avail"><span class="avail-dot"></span>Taking on new clients — May 2026</div>
+    <div class="contact-form reveal">
+      <div class="contact-form-title">Send a Message</div>
+      <form id="contactForm" action="https://formspree.io/f/xkoyqgnl" method="POST">
+        <div class="form-field">
+          <input type="text" name="name" placeholder="Your name" required/>
+        </div>
+        <div class="form-field">
+          <input type="email" name="email" placeholder="Your email" required/>
+        </div>
+        <div class="form-field">
+          <input type="text" name="company" placeholder="Company (optional)"/>
+        </div>
+        <div class="form-field">
+          <textarea name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+      <div class="form-success" id="formSuccess">Thanks — I'll be in touch shortly.</div>
+    </div>
+  </div>
+  <div class="reveal" data-delay="150">
+    <div class="contact-card">
+      <div class="contact-card-title">You're probably a good fit if…</div>
+      <ul class="ideal-client-list">
+        <li><span>You're Series A to C</span> and content has been reactive, not strategic — and you're ready to change that</li>
+        <li><span>You need pipeline,</span> not just traffic — content that actually contributes to revenue</li>
+        <li><span>Your founders have a point of view</span> worth amplifying but no time or process to do it consistently</li>
+        <li><span>You're building or scaling a content function</span> and need senior guidance to get it right the first time</li>
+        <li><span>You operate in a complex market</span> where content needs to educate, not just attract</li>
+      </ul>
+      <p class="contact-card-note">Every engagement starts with a no-obligation discovery call. I'll tell you honestly if I think we're a fit.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Suzanne Robitaille</span>
+  <span class="footer-note">Content Strategy · Growth-Stage Companies</span>
+  <span class="footer-copy">© 2026</span>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) { form.style.display='none'; success.style.display='block'; }
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        setTimeout(() => e.target.classList.add('visible'), +(e.target.dataset.delay || 0));
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

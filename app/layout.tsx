@@ -19,15 +19,17 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: 'Suzanne Robitaille — Ghostwriter for Business Leaders',
   description: 'Executive ghostwriting for thought leadership articles, LinkedIn content, speeches, newsletters, and more. Confidential, always.',
+  openGraph: {
+    images: ['/opengraph-image.png'],
+  },
 }
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${instrumentSans.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${cormorant.variable} ${instrumentSans.variable}`}>
       <body className="font-sans antialiased text-[15px] leading-relaxed overflow-x-hidden">
         {children}
         <Analytics />

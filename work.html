@@ -21,8 +21,8 @@
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
 
     .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
-    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
-    .topbar-left:hover { color: var(--accent); }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text); font-weight:600; }
+    .topbar-left:hover { color: var(--accent); border-bottom-color: var(--accent); }
     .topbar-nav { display:flex; gap:36px; align-items:center; }
     .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
     .topbar-nav a:hover { color:var(--accent); }
@@ -75,8 +75,9 @@
 <body>
 
 <div class="topbar">
-  <a href="/index.html" class="topbar-left">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</a>
+  <span class="topbar-left">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</span>
   <nav class="topbar-nav">
+    <a href="/index.html">Home</a>
     <a href="/index.html#services">Services</a>
     <a href="/index.html#industries">Industries</a>
     <a href="/index.html#process">Process</a>

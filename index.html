@@ -19,8 +19,10 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; overflow-x: hidden; line-height: 1.6; }
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; }
-    .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; }
-    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text); font-weight:600; }
+    .topbar { border-bottom:1px solid var(--border); padding:12px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; gap:16px; }
+    .topbar-left { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text); font-weight:600; white-space:nowrap; flex-shrink:0; }
+    .topbar-left-full { display:inline; }
+    .topbar-left-short { display:none; }
     .topbar-left:hover { color: var(--accent); }
     .topbar-nav { display:flex; gap:36px; align-items:center; }
     .topbar-nav a { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
@@ -110,6 +112,10 @@
     .reveal.visible { opacity:1; transform:none; }
     @media (max-width: 960px) {
       .topbar, .hero, #services, #industries, #process, #contact, footer { padding-left:24px; padding-right:24px; }
+      .topbar { padding:12px 16px; }
+      .topbar-left-full { display:none; }
+      .topbar-left-short { display:inline; }
+      .topbar-nav { display:none; }
       .hero, #contact { grid-template-columns:1fr; gap:48px; }
       .hero-sidebar { border-left:none; border-top:1px solid var(--border); padding-left:0; padding-top:32px; }
       .services-grid, .process-steps { grid-template-columns:1fr; }
@@ -122,7 +128,10 @@
 <body>
 
 <div class="topbar">
-  <span class="topbar-left">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</span>
+  <span class="topbar-left">
+    <span class="topbar-left-full">Content Strategist &nbsp;·&nbsp; Growth-Stage Companies</span>
+    <span class="topbar-left-short">Content Strategist</span>
+  </span>
   <nav class="topbar-nav">
     <a href="#top">Home</a>
     <a href="#services">Services</a>
